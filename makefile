@@ -14,4 +14,4 @@ text.o: text.cpp
 		g++ -c text.cpp text.h -Wall -ansi -pedantic -O1 -lSDL -lSDL_ttf -std=c++0x
 
 clean:
-		-rm -f *.o *.gch *.swn *.swo main *.out *.txt
+		-rm -f *.o *.gch *.swn *.swo main *.out *.txt *.swp *.gch
