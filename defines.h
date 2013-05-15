@@ -6,12 +6,12 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"
-#include "text.h"
 
 #include <iostream>
 #include <string>
 #include <stack>
-#include <sstream>
+
+#include "text.h"
 
 #define WINDOW_WIDTH 400
 #define WINDOW_HEIGHT 300
