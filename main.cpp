@@ -18,8 +18,7 @@ int main( int argc, char **argv ) {
 	bool RUNNING = true;
 	Text Show;
 
-	while( RUNNING ) {
-	
+	while( RUNNING ) {	
 		if( SDL_PollEvent( &g_Event ) ) {
 			// User x'd out the window
 			if( g_Event.type == SDL_QUIT ) {
@@ -37,7 +36,7 @@ int main( int argc, char **argv ) {
 	}
 	
 	SDL_Flip( g_Window );
-	SDL_FillRect( g_Window, NULL, SDL_MapRGB( g_Window->format, 0, 0, 0, ) );
+	SDL_FillRect( g_Window, NULL, SDL_MapRGB( g_Window->format, 0, 0, 0 ) );
 	
 	Shutdown();
 

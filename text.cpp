@@ -4,9 +4,9 @@ Text::Text() {
 	TTF_Init();
 	font = TTF_OpenFont( "arial.ttf", 12 );
 	foregroundColor = { 255, 255, 255 };
-	backgroundColor = { 0, 0, 255 };
+	backgroundColor = { 0, 0, 0 };
 	textSurface = NULL;
-	textLocation = { 10, 10, 0, 0 };
+	textLocation = { 15, 15, 0, 0 };
 }
 
 Text::~Text() {
