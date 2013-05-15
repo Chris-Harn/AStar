@@ -17,8 +17,11 @@ int main( int argc, char **argv ) {
 	// Game variables
 	bool RUNNING = true;
 	Text Show;
+	float currentFPS = 0.0;
 
 	while( RUNNING ) {	
+		// SDL_FillRect( g_Window, NULL, SDL_MapRGB( g_Window->format, 0, 0, 0 ) );
+		
 		if( SDL_PollEvent( &g_Event ) ) {
 			// User x'd out the window
 			if( g_Event.type == SDL_QUIT ) {
@@ -27,16 +30,21 @@ int main( int argc, char **argv ) {
 		}
 
 		++frame;
-		// Calculate and show the frame rate
+		// Calculate and show the frame rate	
 		if( SDL_GetTicks() - g_Timer > 1000 ) {
-			Show.drawFPS( g_Window, frame / ( g_Timer / 1000.f ) );
+			currentFPS = frame / ( g_Timer / 1000.f );
+
+			std::stringstream caption;
+			caption << "Average Frames Per Second: " << currentFPS;
+			SDL_WM_SetCaption( caption.str().c_str(), NULL );
+
 			frame = 0;
 			g_Timer = SDL_GetTicks();
 		}
 	}
 	
+	// Show.drawFPS( g_Window, currentFPS );	
 	SDL_Flip( g_Window );
-	SDL_FillRect( g_Window, NULL, SDL_MapRGB( g_Window->format, 0, 0, 0 ) );
 	
 	Shutdown();
 
