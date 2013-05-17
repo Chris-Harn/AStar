@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "graphics.h"
-// #include "timer.h"
 
 int main( int argc, char **argv ) {
 	Graphics Engine;
@@ -16,7 +15,7 @@ int main( int argc, char **argv ) {
 				Engine.Running = false;
 			}
 		}
-
+		Engine.ShowFPS( 20 );
 		Engine.DrawScene();
 	}
 

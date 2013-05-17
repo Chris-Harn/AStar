@@ -23,7 +23,7 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	
 	SDL_WM_SetCaption( caption, 0 );
 	
-	printf( "Everything worked.\n" );
+	printf( "Graphics were set up without issue.\n" );
 	
 	Running = true;
 }
@@ -40,4 +40,19 @@ void Graphics::ClearScene() {
 
 void Graphics::DrawScene() {
 	SDL_Flip( Window );
+}
+
+void Graphics::ShowFPS( int fps ) {
+	TTF_Font* font = TTF_OpenFont( "arial.ttf", 12 );
+
+	SDL_Color textColor = { 0, 0, 0 };
+
+	SDL_Surface* textSurface = TTF_RenderText_Solid( font, "Average FPS.", textColor );
+
+	SDL_Rect location = { 15, 15, 0, 0 };
+
+	SDL_BlitSurface( textSurface, NULL, Window, &location );
+
+	SDL_FreeSurface( textSurface ); 	
+	TTF_CloseFont( font );
 }

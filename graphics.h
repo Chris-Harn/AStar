@@ -12,6 +12,7 @@ public:
 	void					SetBackgroundColor( int red, int green, int blue );
 	void					ClearScene();
 	void					DrawScene();
+	void					ShowFPS( int fps );
 	bool					Running;
 private:
 	SDL_Surface* 			Window;
