@@ -9,7 +9,6 @@ Timer::Timer() {
 Timer::~Timer() { }
 
 void Timer::StartTime() {
-	running = true;
 	timer = SDL_GetTicks();
 }
 
@@ -18,8 +17,8 @@ int Timer::GetTime() {
 }
 
 void Timer::SetFrameRate( int fps ) {
-	if( fps <  30 ) 
-		frameRate = 1000 / 30;
+	if( fps <=  1 ) 
+		frameRate = 1000;
 	else
 		frameRate = 1000 / fps;
 }

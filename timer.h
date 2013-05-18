@@ -8,14 +8,13 @@ class Timer {
 public:
 							Timer();
 							~Timer();
-	void					StartTime();
-	int						GetTime();
-	void					SetFrameRate( int fps );
-	bool					IsItTime();	
+	void					StartTime(); // Start/reset timer
+	int						GetTime(); // Return SDL_GetTicks
+	void			 		SetFrameRate( int fps ); 
+	bool					IsItTime();	 // Returns true if it has hit the framerate
 private:
-	bool					running;
-	int						timer;
-	int						frameRate;
+	int						timer; // Timer for frame rate
+	int						frameRate; // frameRate = 1000 / fps
 };
 
 #endif
