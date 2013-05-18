@@ -25,24 +25,32 @@ int main( int argc, char **argv ) {
 
 	while( Engine.Running ) {
 		++frame;		
-
-		if( SDL_PollEvent( &event ) ) {
-			if( event.type == SDL_QUIT ) {
-				Engine.Running = false;
-			}
-		}
 	
+
+		if( TimePiece.IsItTime() ) {
+			if( SDL_PollEvent( &event ) ) {
+				if( event.type == SDL_QUIT ) {
+					Engine.Running = false;
+				}
+			}
+
+			if( event.type = SDL_KEYUP ) {
+				if( event.key.keysym.sym == SDLK_ESCAPE ) {
+					Engine.Running = false;
+				}
+			}
+
+			TimePiece.StartTime();
+		}	
+		
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTime() / 1000.f ) ); 
 			FPSTimer.StartTime();
 			frame = 0;
 		}
-
-		if( TimePiece.IsItTime() ) {
-			Engine.ShowFPS( currentFPS );
-			Engine.DrawScene();
-			TimePiece.StartTime();
-		}	
+		
+		Engine.ShowFPS( currentFPS );
+		Engine.DrawScene();
 	}
 
 	return 0;
