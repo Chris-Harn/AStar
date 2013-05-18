@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "graphics.h"
+#include "timer.h"
 
 int main( int argc, char **argv ) {
 	Graphics Engine;
@@ -7,6 +8,8 @@ int main( int argc, char **argv ) {
 	Engine.SetBackgroundColor( 0, 255, 255 );
 	Engine.ClearScene();
 
+	Timer TimePiece;
+	
 	SDL_Event event;
 
 	while( Engine.Running ) {

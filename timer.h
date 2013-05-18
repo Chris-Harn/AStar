@@ -11,7 +11,7 @@ public:
 	void					StartTime();
 	int						GetTime();
 	void					SetFrameRate( int fps );
-	
+	bool					IsItTime();	
 private:
 	bool					running;
 	int						timer;

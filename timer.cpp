@@ -24,4 +24,7 @@ void Timer::SetFrameRate( int fps ) {
 		frameRate = 1000 / fps;
 }
 
+bool Timer::IsItTime() {
+	return ( SDL_GetTicks() - timer ) >= frameRate;
+}
 
