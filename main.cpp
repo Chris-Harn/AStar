@@ -24,6 +24,7 @@ int main( int argc, char **argv ) {
 	SDL_Event event;
 
 	while( Engine.Running ) {
+		Engine.ClearScene();
 		++frame;		
 	
 		if( TimePiece.IsItTime() ) {
@@ -33,7 +34,7 @@ int main( int argc, char **argv ) {
 				}
 			}
 
-			if( event.type = SDL_KEYUP ) {
+			if( event.type == SDL_KEYUP ) {
 				if( event.key.keysym.sym == SDLK_ESCAPE ) {
 					Engine.Running = false;
 				}
