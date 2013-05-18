@@ -47,7 +47,10 @@ void Graphics::ShowFPS( int fps ) {
 
 	SDL_Color textColor = { 0, 0, 0 };
 
-	SDL_Surface* textSurface = TTF_RenderText_Solid( font, "Average FPS.", textColor );
+	std::ostringstream text;
+	text << "Average FPS: " << fps;
+
+	SDL_Surface* textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
 
 	SDL_Rect location = { 15, 15, 0, 0 };
 

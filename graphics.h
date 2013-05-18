@@ -1,8 +1,9 @@
-#ifndef GRAPHICS_H_
-#define GRAPHICS_H_
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"
+#include <sstream>
 
 class Graphics {	
 public:
