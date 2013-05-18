@@ -11,7 +11,7 @@ main: main.o graphics.o
 main.o: main.cpp
 		g++ -c main.cpp defines.h -Wall -ansi -pedantic -O1 -lSDL -lSDL_ttf
 graphics.o: graphics.cpp
-		g++ -c graphics.cpp graphics.h -Wall -ansi -pedantic -O1 -lSDL -lSDL_ttf -std=c++0x
+		g++ -c graphics.cpp graphics.h -Wall -ansi -pedantic -O1 -lSDL -lSDL_ttf
 
 clean:
 		-rm -f *.o *.gch *.swn *.swo main *.out *.txt *.swp *.gch

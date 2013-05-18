@@ -1,8 +1,8 @@
 #include "graphics.h"
 
 Graphics::Graphics() {
-	if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) == -1 ) {
-		printf( "SDL_Init failed: %s\n", SDL_GetError() );
+	if( SDL_Init( SDL_INIT_VIDEO ) == -1 ) {
+		printf( "SDL_Init_Video failed: %s\n", SDL_GetError() );
 	}
 }
 
