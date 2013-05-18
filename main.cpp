@@ -26,7 +26,6 @@ int main( int argc, char **argv ) {
 	while( Engine.Running ) {
 		++frame;		
 	
-
 		if( TimePiece.IsItTime() ) {
 			if( SDL_PollEvent( &event ) ) {
 				if( event.type == SDL_QUIT ) {
