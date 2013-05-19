@@ -64,7 +64,7 @@ void Graphics::ShowFPS( int fps ) {
 	// TTF_CloseFont( font );
 }
 
-void Graphics::DrawSprite( SDL_Surface* spriteSurface, SDL_Surface* drawOnSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {
+void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {
 	SDL_Rect spriteRect;
 	spriteRect.x = srcX;
 	spriteRect.y = srcY;
@@ -77,5 +77,5 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, SDL_Surface* drawOnSurfac
 	drawRect.w = width;
 	drawRect.h = height;
 
-	SDL_BlitSurface( spriteSurface, &spriteRect , drawOnSurface, &drawRect );
+	SDL_BlitSurface( spriteSurface, &spriteRect , Window, &drawRect );
 }

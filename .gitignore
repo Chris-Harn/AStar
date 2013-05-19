@@ -21,3 +21,6 @@ main
 # Needed Files, but Can't Share
 *.dll
 *.ttf
+
+# Files just for testing
+*.bmp

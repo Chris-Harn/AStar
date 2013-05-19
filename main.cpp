@@ -8,6 +8,9 @@ int main( int argc, char **argv ) {
 	Engine.Init( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_CAPTION );
 	Engine.SetBackgroundColor( 0, 255, 255 );
 
+	// Test bitmap
+	SDL_Surface* bitmap = SDL_LoadBMP("bat.bmp");
+
 	// Setup timers
 	Timer TimePiece;
 	TimePiece.SetFrameRate( 30 );
@@ -25,21 +28,18 @@ int main( int argc, char **argv ) {
 	while( Engine.Running ) {
 		++frame;		
 	
-		if( TimePiece.IsItTime() ) {
-			if( SDL_PollEvent( &event ) ) {
-				if( event.type == SDL_QUIT ) {
-					Engine.Running = false;
-				}
+		if( SDL_PollEvent( &event ) ) {
+			if( event.type == SDL_QUIT ) {
+				Engine.Running = false;
 			}
+		}
 
-			if( event.type == SDL_KEYUP ) {
-				if( event.key.keysym.sym == SDLK_ESCAPE ) {
-					Engine.Running = false;
-				}
+		if( event.type == SDL_KEYUP ) {
+			if( event.key.keysym.sym == SDLK_ESCAPE ) {
+				Engine.Running = false;
 			}
+		}
 
-			TimePiece.StartTime();
-		}	
 		
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTime() / 1000.f ) ); 
@@ -55,9 +55,20 @@ int main( int argc, char **argv ) {
 		}
 		
 		Engine.ClearScene();
+		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
 		Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
+
+		/*		
+		// Cap the frame rate
+		if( !TimePiece.IsItTime() ) {
+			SDL_Delay( ( 1000 / 30 ) - TimePiece.GetTime() );
+			TimePiece.StartTime();
+		}
+		*/
 	}
+
+	SDL_FreeSurface( bitmap );
 
 	return 0;
 }	

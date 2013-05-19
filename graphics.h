@@ -15,7 +15,7 @@ public:
 	void					DrawScene();
 	void					ShowFPS( int fps );
 	bool					Running;
-	void					DrawSprite( SDL_Surface* spriteSurface, SDL_Surface* drawOnSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
+	void					DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
