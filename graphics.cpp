@@ -15,7 +15,7 @@ Graphics::~Graphics() {
 
 void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	TTF_Init();
-	Window = SDL_SetVideoMode( windowWidth, windowHeight, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
+	Window = SDL_SetVideoMode( windowWidth, windowHeight, 16, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_ASYNCBLIT | SDL_ANYFORMAT | SDL_SRCALPHA );
 	
 	if( Window == NULL ) {
 		printf( "Window failed to set up correct.\n" );
@@ -48,7 +48,7 @@ void Graphics::ShowFPS( int fps ) {
 	SDL_Color textColor = { 0, 0, 0 };
 
 	std::ostringstream text;
-	text << "Average FPS: " << fps;
+	text << fps << " FPS ";
 
 	SDL_Surface* textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
 

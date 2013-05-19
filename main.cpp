@@ -10,13 +10,13 @@ int main( int argc, char **argv ) {
 	Engine.ClearScene();
 
 	// Setup timers
-	Timer TimePiece;
-	TimePiece.SetFrameRate( 30 );
-	TimePiece.StartTime();
+	// Timer TimePiece;
+	// TimePiece.SetFrameRate( 30 );
+	// TimePiece.StartTime();
 
 	Timer FPSTimer;
 	FPSTimer.SetFrameRate( 1 );
-	TimePiece.StartTime();
+	FPSTimer.StartTime();
 
 	int frame = 0;
 	int currentFPS = 0;
@@ -27,7 +27,7 @@ int main( int argc, char **argv ) {
 		Engine.ClearScene();
 		++frame;		
 	
-		if( TimePiece.IsItTime() ) {
+		// if( TimePiece.IsItTime() ) {
 			if( SDL_PollEvent( &event ) ) {
 				if( event.type == SDL_QUIT ) {
 					Engine.Running = false;
@@ -40,16 +40,18 @@ int main( int argc, char **argv ) {
 				}
 			}
 
-			TimePiece.StartTime();
-		}	
+		//	TimePiece.StartTime();
+		// }	
 		
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTime() / 1000.f ) ); 
 			FPSTimer.StartTime();
 			frame = 0;
+			
+			printf("Current FPS is %i.\n", currentFPS );
 		}
 		
-		Engine.ShowFPS( currentFPS );
+		// Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
 	}
 
