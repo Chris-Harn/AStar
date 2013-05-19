@@ -1,5 +1,5 @@
-#ifndef DEFINES_H_
-#define DEFINES_H_
+#ifndef DEFINES_H
+#define DEFINES_H
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"

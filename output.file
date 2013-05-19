@@ -1,0 +1,1812 @@
+==5235== Memcheck, a memory error detector
+==5235== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==5235== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==5235== Command: ./main
+==5235== Parent PID: 4043
+==5235== 
+--5235-- 
+--5235-- Valgrind options:
+--5235--    --suppressions=/usr/lib/valgrind/debian-libc6-dbg.supp
+--5235--    -v
+--5235--    --log-file=output.file
+--5235--    --leak-check=yes
+--5235--    --tool=memcheck
+--5235--    --track-origins=yes
+--5235--    --leak-check=full
+--5235--    --show-reachable=yes
+--5235-- Contents of /proc/version:
+--5235--   Linux version 3.2.0-43-generic (buildd@aatxe) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #68-Ubuntu SMP Wed May 15 03:35:24 UTC 2013
+--5235-- Arch and hwcaps: X86, x86-sse1-sse2
+--5235-- Page sizes: currently 4096, max supported 4096
+--5235-- Valgrind library directory: /usr/lib/valgrind
+--5235-- Reading syms from /lib/i386-linux-gnu/ld-2.15.so (0x4000000)
+--5235--   Considering /lib/i386-linux-gnu/ld-2.15.so ..
+--5235--   .. CRC mismatch (computed 09ddbdc7 wanted 04f66776)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/ld-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /home/shalmander/Workspace/AStar/main (0x8048000)
+--5235-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux (0x38000000)
+--5235--   Considering /usr/lib/valgrind/memcheck-x86-linux ..
+--5235--   .. CRC mismatch (computed 2a2bce46 wanted 9ac1affc)
+--5235--    object doesn't have a symbol table
+--5235--    object doesn't have a dynamic symbol table
+--5235-- Reading suppressions file: /usr/lib/valgrind/debian-libc6-dbg.supp
+--5235-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==5235== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-5235-by-shalmander-on-???
+==5235== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-5235-by-shalmander-on-???
+==5235== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-5235-by-shalmander-on-???
+==5235== 
+==5235== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==5235== don't want to do, unless you know exactly what you're doing,
+==5235== or are doing some strange experiment):
+==5235==   /usr/lib/valgrind/../../bin/vgdb --pid=5235 ...command...
+==5235== 
+==5235== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==5235==   /path/to/gdb ./main
+==5235== and then give GDB the following command
+==5235==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=5235
+==5235== --pid is optional if only one valgrind process is running
+==5235== 
+--5235-- REDIR: 0x40182e0 (strlen) redirected to 0x38056b04 (???)
+--5235-- REDIR: 0x4018060 (index) redirected to 0x38056adf (???)
+--5235-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so (0x4025000)
+--5235--   Considering /usr/lib/valgrind/vgpreload_core-x86-linux.so ..
+--5235--   .. CRC mismatch (computed 33f4d79f wanted ac058c14)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so (0x4028000)
+--5235--   Considering /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so ..
+--5235--   .. CRC mismatch (computed 8c6a0645 wanted b38afa17)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3 (0x4048000)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libSDL_ttf-2.0.so.0.6.3 (0x40e3000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libSDL_ttf-2.0.so.0.6.3 ..
+--5235--   .. CRC mismatch (computed 0492701e wanted 967e9382)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16 (0x40ea000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16 ..
+--5235--   .. CRC mismatch (computed 623761b6 wanted 2e01ae44)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libgcc_s.so.1 (0x41cf000)
+--5235--   Considering /lib/i386-linux-gnu/libgcc_s.so.1 ..
+--5235--   .. CRC mismatch (computed 679327fe wanted cd8c80b8)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libc-2.15.so (0x41ed000)
+--5235--   Considering /lib/i386-linux-gnu/libc-2.15.so ..
+--5235--   .. CRC mismatch (computed 2738057d wanted 3019522c)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libc-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /lib/i386-linux-gnu/libpthread-2.15.so (0x4397000)
+--5235--   Considering /lib/i386-linux-gnu/libpthread-2.15.so ..
+--5235--   .. CRC mismatch (computed e3e38d22 wanted 86ccdb6e)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libpthread-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libasound.so.2.0.0 (0x43b2000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libasound.so.2.0.0 ..
+--5235--   .. CRC mismatch (computed 5ce34be8 wanted 4b2a8471)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libm-2.15.so (0x44a4000)
+--5235--   Considering /lib/i386-linux-gnu/libm-2.15.so ..
+--5235--   .. CRC mismatch (computed 6ee9373d wanted 98815fe2)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libm-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /lib/i386-linux-gnu/libdl-2.15.so (0x44d0000)
+--5235--   Considering /lib/i386-linux-gnu/libdl-2.15.so ..
+--5235--   .. CRC mismatch (computed 1b31a2a1 wanted 2c5f1f7d)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libdl-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libpulse-simple.so.0.0.3 (0x44d5000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libpulse-simple.so.0.0.3 ..
+--5235--   .. CRC mismatch (computed 92fa6051 wanted 4ac04816)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libpulse.so.0.13.5 (0x44db000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libpulse.so.0.13.5 ..
+--5235--   .. CRC mismatch (computed 527dc53e wanted 405a0f80)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libX11.so.6.3.0 (0x4529000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libX11.so.6.3.0 ..
+--5235--   .. CRC mismatch (computed bbfad49c wanted 291b2ae6)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXext.so.6.4.0 (0x465d000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libXext.so.6.4.0 ..
+--5235--   .. CRC mismatch (computed 75741ec1 wanted 869861bb)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libcaca.so.0.99.17 (0x466f000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libcaca.so.0.99.17 ..
+--5235--   .. CRC mismatch (computed 1c80c6b5 wanted 9790d3fd)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libfreetype.so.6.8.0 (0x473a000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libfreetype.so.6.8.0 ..
+--5235--   .. CRC mismatch (computed 65f444e1 wanted 265dc99d)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/librt-2.15.so (0x47d5000)
+--5235--   Considering /lib/i386-linux-gnu/librt-2.15.so ..
+--5235--   .. CRC mismatch (computed c7d006a0 wanted 31cb36e6)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/librt-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libpulsecommon-1.1.so (0x47de000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libpulsecommon-1.1.so ..
+--5235--   .. CRC mismatch (computed 6594a36e wanted eca70413)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libjson.so.0.0.1 (0x4843000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libjson.so.0.0.1 ..
+--5235--   .. CRC mismatch (computed 11cd864a wanted 69dbc83e)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libdbus-1.so.3.5.8 (0x484b000)
+--5235--   Considering /lib/i386-linux-gnu/libdbus-1.so.3.5.8 ..
+--5235--   .. CRC mismatch (computed e41da7f9 wanted 39f21337)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libxcb.so.1.1.0 (0x4894000)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libslang.so.2.2.4 (0x48b6000)
+--5235--   Considering /lib/i386-linux-gnu/libslang.so.2.2.4 ..
+--5235--   .. CRC mismatch (computed b63740a2 wanted 56cb14d9)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libncursesw.so.5.9 (0x49d6000)
+--5235--   Considering /lib/i386-linux-gnu/libncursesw.so.5.9 ..
+--5235--   .. CRC mismatch (computed 19c55d40 wanted ccc43b09)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libtinfo.so.5.9 (0x4a06000)
+--5235--   Considering /lib/i386-linux-gnu/libtinfo.so.5.9 ..
+--5235--   .. CRC mismatch (computed 1682cce8 wanted 364f91e6)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libz.so.1.2.3.4 (0x4a25000)
+--5235--   Considering /lib/i386-linux-gnu/libz.so.1.2.3.4 ..
+--5235--   .. CRC mismatch (computed aec2705a wanted 78e2268c)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libwrap.so.0.7.6 (0x4a3b000)
+--5235--   Considering /lib/i386-linux-gnu/libwrap.so.0.7.6 ..
+--5235--   .. CRC mismatch (computed 217ae97f wanted 6e5b3804)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libsndfile.so.1.0.25 (0x4a46000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libsndfile.so.1.0.25 ..
+--5235--   .. CRC mismatch (computed 97b1e7ea wanted 2706343c)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libasyncns.so.0.3.1 (0x4ab8000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libasyncns.so.0.3.1 ..
+--5235--   .. CRC mismatch (computed a86e9172 wanted 16658f37)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXau.so.6.0.0 (0x4abf000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libXau.so.6.0.0 ..
+--5235--   .. CRC mismatch (computed ba94a443 wanted 657bd95e)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0 (0x4ac3000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0 ..
+--5235--   .. CRC mismatch (computed 7fee4ba6 wanted 2634a4e5)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libnsl-2.15.so (0x4aca000)
+--5235--   Considering /lib/i386-linux-gnu/libnsl-2.15.so ..
+--5235--   .. CRC mismatch (computed 6c72baff wanted 671acdc5)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libnsl-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libFLAC.so.8.2.0 (0x4ae5000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libFLAC.so.8.2.0 ..
+--5235--   .. CRC mismatch (computed 9a3b72da wanted acc7f992)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libvorbisenc.so.2.0.8 (0x4b33000)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libvorbis.so.0.4.5 (0x4cab000)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libogg.so.0.7.1 (0x4cd6000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libogg.so.0.7.1 ..
+--5235--   .. CRC mismatch (computed 671d8ff1 wanted 0afef002)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /lib/i386-linux-gnu/libresolv-2.15.so (0x4cde000)
+--5235--   Considering /lib/i386-linux-gnu/libresolv-2.15.so ..
+--5235--   .. CRC mismatch (computed f77de5a2 wanted d00da8f4)
+--5235--   Considering /usr/lib/debug/lib/i386-linux-gnu/libresolv-2.15.so ..
+--5235--   .. CRC is valid
+--5235-- REDIR: 0x426b010 (strnlen) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426c560 (strncasecmp) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426a760 (strcmp) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426bf70 (memmove) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426c6f0 (memcpy) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426bc40 (bcmp) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426af00 (strlen) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426c030 (memset) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x426b100 (strncpy) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x4284050 (strstr) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x4283c90 (__GI_strstr) redirected to 0x402f030 (strstr)
+--5235-- REDIR: 0x426b1b0 (__GI_strrchr) redirected to 0x402c1b0 (__GI_strrchr)
+--5235-- REDIR: 0x4267da0 (calloc) redirected to 0x402a540 (calloc)
+--5235-- REDIR: 0x426af50 (__GI_strlen) redirected to 0x402c670 (__GI_strlen)
+--5235-- REDIR: 0x4271620 (__GI_strncmp) redirected to 0x402cb90 (__GI_strncmp)
+--5235-- REDIR: 0x4266d80 (malloc) redirected to 0x402be00 (malloc)
+--5235-- REDIR: 0x426b160 (rindex) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x42828f0 (__strrchr_sse2_bsf) redirected to 0x402c170 (rindex)
+--5235-- REDIR: 0x4322590 (__memcpy_ssse3) redirected to 0x402d930 (memcpy)
+--5235-- REDIR: 0x4267260 (free) redirected to 0x402b000 (free)
+--5235-- REDIR: 0x426d880 (strchrnul) redirected to 0x402ebe0 (strchrnul)
+--5235-- REDIR: 0x42ef150 (__strcpy_chk) redirected to 0x402ec50 (__strcpy_chk)
+--5235-- REDIR: 0x426b0b0 (strncmp) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x432d000 (__strncmp_ssse3) redirected to 0x402caf0 (strncmp)
+--5235-- REDIR: 0x4333a70 (__memcmp_ssse3) redirected to 0x402e460 (bcmp)
+--5235-- REDIR: 0x4321480 (__memset_sse2) redirected to 0x402e880 (memset)
+--5235-- REDIR: 0x4324e90 (__memmove_ssse3) redirected to 0x402e910 (memmove)
+--5235-- REDIR: 0x4267310 (realloc) redirected to 0x402bed0 (realloc)
+--5235-- REDIR: 0x4273110 (__strncpy_ssse3) redirected to 0x402c830 (strncpy)
+--5235-- REDIR: 0x4271740 (__strlen_sse2_bsf) redirected to 0x402c650 (strlen)
+--5235-- REDIR: 0x426a820 (strcpy) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x42718c0 (__strcpy_ssse3) redirected to 0x402c690 (strcpy)
+--5235-- REDIR: 0x426a550 (index) redirected to 0x40254a0 (_vgnU_ifunc_wrapper)
+--5235-- REDIR: 0x42827e0 (__strchr_sse2_bsf) redirected to 0x402c280 (index)
+--5235-- REDIR: 0x432bb90 (__strcmp_ssse3) redirected to 0x402d280 (strcmp)
+--5235-- REDIR: 0x426a7b0 (__GI_strcmp) redirected to 0x402d2e0 (__GI_strcmp)
+--5235-- REDIR: 0x426a5a0 (__GI_strchr) redirected to 0x402c2d0 (__GI_strchr)
+--5235-- REDIR: 0x426c380 (__GI_stpcpy) redirected to 0x402e610 (__GI_stpcpy)
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2 (0x4036000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2 ..
+--5235--   .. CRC mismatch (computed 27b8283e wanted cf02d89f)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXrender.so.1.3.0 (0x530d000)
+--5235--   Considering /usr/lib/i386-linux-gnu/libXrender.so.1.3.0 ..
+--5235--   .. CRC mismatch (computed ec5842e3 wanted da97722e)
+--5235--    object doesn't have a symbol table
+--5235-- Reading syms from /usr/lib/i386-linux-gnu/libXfixes.so.3.1.0 (0x4041000)
+--5235--    object doesn't have a symbol table
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3CBE: writev (writev.c:51)
+==5235==    by 0x40495A3: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==  Address 0x4d18ad3 is 19 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x4F64DBF: ???
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x489D942: ??? (in /usr/lib/i386-linux-gnu/libxcb.so.1.1.0)
+==5235==    by 0x4659FF3: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x40011AF: ??? (in /lib/i386-linux-gnu/ld-2.15.so)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 
+==5235== Process terminating with default action of signal 27 (SIGPROF)
+==5235==    at 0x42CAF73: __open_nocancel (syscall-template.S:82)
+==5235==    by 0x42DF158: _mcleanup (gmon.c:428)
+==5235==    by 0x421FF50: __run_exit_handlers (exit.c:78)
+==5235==    by 0x421FFDC: exit (exit.c:100)
+==5235==    by 0x42064DA: (below main) (libc-start.c:258)
+==5235== 
+==5235== HEAP SUMMARY:
+==5235==     in use at exit: 40,576 bytes in 507 blocks
+==5235==   total heap usage: 29,204 allocs, 28,697 frees, 2,200,161 bytes allocated
+==5235== 
+==5235== Searching for pointers to 507 not-freed blocks
+==5235== Checked 1,498,828 bytes
+==5235== 
+==5235== 1 bytes in 1 blocks are definitely lost in loss record 1 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457DC10: _XlcDefaultMapModifiers (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E04A: XSetLocaleModifiers (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 2 bytes in 1 blocks are still reachable in loss record 2 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457602F: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 2 bytes in 1 blocks are still reachable in loss record 3 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x426AB90: strdup (strdup.c:43)
+==5235==    by 0x45727A8: _XlcResolveLocaleName (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457624A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 4 bytes in 1 blocks are still reachable in loss record 4 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4588FBC: _XimOpenIM (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456E04A: XOpenIM (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 7 bytes in 1 blocks are still reachable in loss record 5 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x426AB90: strdup (strdup.c:43)
+==5235== 
+==5235== 8 bytes in 1 blocks are still reachable in loss record 6 of 121
+==5235==    at 0x402BF52: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45737B6: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 8 bytes in 2 blocks are still reachable in loss record 7 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45742A4: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 8 bytes in 2 blocks are indirectly lost in loss record 8 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45742A4: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 10 bytes in 2 blocks are definitely lost in loss record 9 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x426AB90: strdup (strdup.c:43)
+==5235== 
+==5235== 11 bytes in 1 blocks are still reachable in loss record 10 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD90: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x473A522C: ???
+==5235== 
+==5235== 12 bytes in 1 blocks are still reachable in loss record 11 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x46696DA: XextCreateExtension (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x4669164: ??? (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x46694FA: ??? (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x46699D5: XextAddDisplay (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x466443D: ??? (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x466473B: XShmQueryExtension (in /usr/lib/i386-linux-gnu/libXext.so.6.4.0)
+==5235==    by 0x408CF3F: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 12 bytes in 1 blocks are still reachable in loss record 12 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4573375: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FCF: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 12 bytes in 1 blocks are still reachable in loss record 13 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457DE4D: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x453D87B: _XNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x453DECB: XCreatePixmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 20 bytes in 1 blocks are still reachable in loss record 14 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x44D13AD: _dlerror_run (dlerror.c:142)
+==5235== 
+==5235== 20 bytes in 1 blocks are still reachable in loss record 15 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4571C53: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 24 bytes in 1 blocks are still reachable in loss record 16 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x40A2219: SDL_CreateMutex (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x42064D2: (below main) (libc-start.c:226)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 17 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45553BA: _XrmInternalStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4555574: XrmStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FB1A: _XlcGetCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F6E0: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 18 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA7B: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 19 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FAA1: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 20 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FAC7: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 21 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FAED: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 22 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F9E: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 23 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594FC6: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 24 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594FF2: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 25 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595014: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 26 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595032: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 27 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595054: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 28 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595076: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 29 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595098: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 30 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950B8: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 31 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950DA: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 32 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950FC: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 33 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D44B: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 34 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D46F: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 35 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D48D: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 36 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4B5: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 37 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4D7: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 38 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4FB: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 39 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D519: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 40 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D579: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 41 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D59B: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 42 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D5C7: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 43 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D5ED: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 44 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D60B: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 45 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D629: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 46 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D651: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 47 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D673: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 48 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D69B: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 49 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D6C1: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 50 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D6E3: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 51 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D705: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 52 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D727: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 53 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D749: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 54 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D767: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 55 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D789: _XlcAddUtf8LocaleConverters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x459914F: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 56 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D44B: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 57 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D46F: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 58 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D48D: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 59 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4B5: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 60 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4D7: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 61 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4FB: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 62 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D519: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4599139: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 63 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F9E: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 64 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594FC6: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 65 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594FF2: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 66 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595014: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 67 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595032: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 68 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595054: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 69 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595076: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 70 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595098: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 71 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950B8: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 72 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950DA: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 73 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45950FC: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 74 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D44B: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 75 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D46F: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 76 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D48D: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 77 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4B5: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 78 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4D7: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 79 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D4FB: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 32 bytes in 1 blocks are still reachable in loss record 80 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570267: _XlcSetConverter (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457D519: _XlcAddUtf8Converters (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4595104: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 38 bytes in 2 blocks are still reachable in loss record 81 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD90: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x2E313035: ???
+==5235== 
+==5235== 40 bytes in 1 blocks are still reachable in loss record 82 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400542E: local_strdup (dl-load.c:162)
+==5235==    by 0x40085E3: _dl_map_object (dl-load.c:2473)
+==5235==    by 0x4012D6C: dl_open_worker (dl-open.c:225)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 40 bytes in 1 blocks are still reachable in loss record 83 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400B06A: _dl_new_object (dl-object.c:161)
+==5235==    by 0x4006447: _dl_map_object_from_fd (dl-load.c:1051)
+==5235==    by 0x40083AF: _dl_map_object (dl-load.c:2568)
+==5235==    by 0x4012D6C: dl_open_worker (dl-open.c:225)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 40 bytes in 2 blocks are still reachable in loss record 84 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD90: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x3830322F: ???
+==5235== 
+==5235== 40 bytes in 5 blocks are still reachable in loss record 85 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FC1B: _XlcAddCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4574234: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 40 bytes in 3 blocks are indirectly lost in loss record 86 of 121
+==5235==    at 0x402BF52: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457415C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 47 bytes in 5 blocks are still reachable in loss record 87 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456F8F0: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 48 bytes in 1 blocks are still reachable in loss record 88 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD49: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x473A522C: ???
+==5235== 
+==5235== 56 bytes in 14 blocks are indirectly lost in loss record 89 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45742A4: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 64 bytes in 1 blocks are still reachable in loss record 90 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4566E33: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4567578: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682D4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x453D87B: _XNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x453DECB: XCreatePixmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4089978: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 69 bytes in 5 blocks are still reachable in loss record 91 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FDFB: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4574216: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 79 bytes in 2 blocks are still reachable in loss record 92 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400542E: local_strdup (dl-load.c:162)
+==5235==    by 0x40085E3: _dl_map_object (dl-load.c:2473)
+==5235==    by 0x400D177: openaux (dl-deps.c:65)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x4012DC9: dl_open_worker (dl-open.c:262)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 79 bytes in 2 blocks are still reachable in loss record 93 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400B06A: _dl_new_object (dl-object.c:161)
+==5235==    by 0x4006447: _dl_map_object_from_fd (dl-load.c:1051)
+==5235==    by 0x40083AF: _dl_map_object (dl-load.c:2568)
+==5235==    by 0x400D177: openaux (dl-deps.c:65)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x4012DC9: dl_open_worker (dl-open.c:262)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 84 bytes in 1 blocks are still reachable in loss record 94 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45733A2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FCF: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 96 bytes in 1 blocks are still reachable in loss record 95 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457338F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FCF: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235== 
+==5235== 96 bytes in 2 blocks are still reachable in loss record 96 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD49: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x3830322F: ???
+==5235== 
+==5235== 96 bytes in 2 blocks are still reachable in loss record 97 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD49: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x2E313035: ???
+==5235== 
+==5235== 96 bytes in 2 blocks are still reachable in loss record 98 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4573787: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457E0BA: _XrmInitParseInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45646BD: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682A4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 96 bytes in 2 blocks are indirectly lost in loss record 99 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4573787: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 112 (8 direct, 104 indirect) bytes in 1 blocks are definitely lost in loss record 100 of 121
+==5235==    at 0x402BF52: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45737B6: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4594F59: _XlcDefaultLoader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 142 bytes in 18 blocks are still reachable in loss record 101 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4570889: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571721: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571850: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571CC4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 144 bytes in 18 blocks are still reachable in loss record 102 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457085B: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571721: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571850: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571CC4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 216 bytes in 18 blocks are still reachable in loss record 103 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x426AB90: strdup (strdup.c:43)
+==5235==    by 0x4571527: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571850: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571CC4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 256 bytes in 3 blocks are still reachable in loss record 104 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x401046C: _dl_check_map_versions (dl-version.c:300)
+==5235==    by 0x401337A: dl_open_worker (dl-open.c:268)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 274 bytes in 18 blocks are still reachable in loss record 105 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x426AB90: strdup (strdup.c:43)
+==5235==    by 0x457169A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571850: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571CC4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 304 bytes in 1 blocks are still reachable in loss record 106 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4571BF4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 360 bytes in 18 blocks are still reachable in loss record 107 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x457150D: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571850: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4571CC4: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45762AB: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0xBECAF9D7: ???
+==5235== 
+==5235== 400 bytes in 50 blocks are still reachable in loss record 108 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FC1B: _XlcAddCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F9AE: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 632 bytes in 1 blocks are still reachable in loss record 109 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400AE1F: _dl_new_object (dl-object.c:77)
+==5235==    by 0x4006447: _dl_map_object_from_fd (dl-load.c:1051)
+==5235==    by 0x40083AF: _dl_map_object (dl-load.c:2568)
+==5235==    by 0x4012D6C: dl_open_worker (dl-open.c:225)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 633 bytes in 49 blocks are still reachable in loss record 110 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FDFB: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F99A: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 816 bytes in 17 blocks are indirectly lost in loss record 111 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4573787: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 980 (68 direct, 912 indirect) bytes in 1 blocks are definitely lost in loss record 112 of 121
+==5235==    at 0x402BF52: realloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x45737B6: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4573CB2: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457575F: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235== 
+==5235== 1,028 bytes in 50 blocks are still reachable in loss record 113 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD90: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F99A: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 1,263 bytes in 2 blocks are still reachable in loss record 114 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x400AE1F: _dl_new_object (dl-object.c:77)
+==5235==    by 0x4006447: _dl_map_object_from_fd (dl-load.c:1051)
+==5235==    by 0x40083AF: _dl_map_object (dl-load.c:2568)
+==5235==    by 0x400D177: openaux (dl-deps.c:65)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x4012DC9: dl_open_worker (dl-open.c:262)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235==    by 0x44D0BE8: dlopen_doit (dlopen.c:67)
+==5235==    by 0x400ECCE: _dl_catch_error (dl-error.c:178)
+==5235== 
+==5235== 1,631 bytes in 50 blocks are still reachable in loss record 115 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456F717: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 2,048 bytes in 1 blocks are still reachable in loss record 116 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4571AF7: _XlcCreateLocaleDataBase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x452B903: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 2,400 bytes in 50 blocks are still reachable in loss record 117 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x456FD49: _XlcCreateDefaultCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F99A: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DFA1: _XlcCurrentLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CE4B: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 4,052 bytes in 1 blocks are still reachable in loss record 118 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x42DEFE4: monstartup (gmon.c:134)
+==5235==    by 0xBECB1369: ???
+==5235==    by 0x4E45504E: ???
+==5235== 
+==5235== 4,096 bytes in 1 blocks are still reachable in loss record 119 of 121
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x455521B: _XrmInternalStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4567037: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682D4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x453D87B: _XNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x453DECB: XCreatePixmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4089978: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235== 
+==5235== 8,176 bytes in 1 blocks are still reachable in loss record 120 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4554FC3: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45553D6: _XrmInternalStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4555574: XrmStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FB1A: _XlcGetCharSet (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456F6E0: _XlcAddCT (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x456FA0E: _XlcInitCTInfo (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457613C: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575752: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4575FEA: _XlcCreateLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45990E7: _XlcUtf8Loader (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x457DE3B: _XOpenLC (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 8,176 bytes in 1 blocks are still reachable in loss record 121 of 121
+==5235==    at 0x402BE68: malloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x4554FC3: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45554D2: _XrmInternalStringToQuark (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4567037: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x45682D4: XrmGetStringDatabase (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4543E0A: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4544026: XGetDefault (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x4039C20: _XcursorGetDisplayInfo (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x4039C7A: XcursorSupportsARGB (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x403C861: XcursorNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libXcursor.so.1.0.2)
+==5235==    by 0x453D87B: _XNoticeCreateBitmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x453DECB: XCreatePixmap (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== LEAK SUMMARY:
+==5235==    definitely lost: 87 bytes in 5 blocks
+==5235==    indirectly lost: 1,016 bytes in 38 blocks
+==5235==      possibly lost: 0 bytes in 0 blocks
+==5235==    still reachable: 39,473 bytes in 464 blocks
+==5235==         suppressed: 0 bytes in 0 blocks
+==5235== 
+==5235== ERROR SUMMARY: 5478 errors from 9 contexts (suppressed: 0 from 0)
+==5235== 
+==5235== 1 errors in context 1 of 9:
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x4F64DBF: ???
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 
+==5235== 1 errors in context 2 of 9:
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3CBE: writev (writev.c:51)
+==5235==    by 0x40495A3: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==  Address 0x4d18ad3 is 19 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 
+==5235== 37 errors in context 3 of 9:
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x40011AF: ??? (in /lib/i386-linux-gnu/ld-2.15.so)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 
+==5235== 120 errors in context 4 of 9:
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== 
+==5235== 5315 errors in context 5 of 9:
+==5235== Syscall param writev(vector[...]) points to uninitialised byte(s)
+==5235==    at 0x42D3D00: writev (writev.c:56)
+==5235==    by 0x489D942: ??? (in /usr/lib/i386-linux-gnu/libxcb.so.1.1.0)
+==5235==    by 0x4659FF3: ??? (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==  Address 0x4d18adf is 31 bytes inside a block of size 16,384 alloc'd
+==5235==    at 0x402A5E6: calloc (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==5235==    by 0x454FA01: XOpenDisplay (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235==    by 0x408CC73: ??? (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x407AD18: SDL_VideoInit (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x404F269: SDL_InitSubSystem (in /usr/lib/i386-linux-gnu/libSDL-1.2.so.0.11.3)
+==5235==    by 0x804925B: main (in /home/shalmander/Workspace/AStar/main)
+==5235==  Uninitialised value was created by a stack allocation
+==5235==    at 0x455B584: XStoreColors (in /usr/lib/i386-linux-gnu/libX11.so.6.3.0)
+==5235== 
+==5235== ERROR SUMMARY: 5478 errors from 9 contexts (suppressed: 0 from 0)

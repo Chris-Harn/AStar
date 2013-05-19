@@ -23,8 +23,6 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	
 	SDL_WM_SetCaption( caption, 0 );
 	
-	printf( "Graphics were set up without issue.\n" );
-	
 	Running = true;
 }
 
