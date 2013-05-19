@@ -47,6 +47,11 @@ int main( int argc, char **argv ) {
 			frame = 0;
 			
 			// printf("Current FPS is %i.\n", currentFPS );
+			/*
+			std::stringstream caption;
+			caption << "Average Frames Per Second: " << currentFPS;
+			SDL_WM_SetCaption( caption.str().c_str(), NULL );
+			*/
 		}
 		
 		Engine.ClearScene();

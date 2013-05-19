@@ -4,10 +4,13 @@ Graphics::Graphics() {
 	if( SDL_Init( SDL_INIT_VIDEO ) == -1 ) {
 		printf( "SDL_Init_Video failed: %s\n", SDL_GetError() );
 	}
+
+	font = NULL;
 }
 
 Graphics::~Graphics() {
 	SDL_FreeSurface( Window );
+	TTF_CloseFont( font );
 
 	TTF_Quit();
 	SDL_Quit();
@@ -24,6 +27,9 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	SDL_WM_SetCaption( caption, 0 );
 	
 	Running = true;
+
+	// Optimizing and testing font
+	font = TTF_OpenFont( "arial.ttf", 12 );
 }
 
 void Graphics::SetBackgroundColor( int red, int green, int blue ) {
@@ -41,7 +47,7 @@ void Graphics::DrawScene() {
 }
 
 void Graphics::ShowFPS( int fps ) {
-	TTF_Font* font = TTF_OpenFont( "arial.ttf", 12 );
+	// TTF_Font* font = TTF_OpenFont( "arial.ttf", 12 );
 
 	SDL_Color textColor = { 0, 0, 0 };
 
@@ -55,5 +61,21 @@ void Graphics::ShowFPS( int fps ) {
 	SDL_BlitSurface( textSurface, NULL, Window, &location );
 
 	SDL_FreeSurface( textSurface ); 	
-	TTF_CloseFont( font );
+	// TTF_CloseFont( font );
+}
+
+void Graphics::DrawSprite( SDL_Surface* spriteSurface, SDL_Surface* drawOnSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {
+	SDL_Rect spriteRect;
+	spriteRect.x = srcX;
+	spriteRect.y = srcY;
+	spriteRect.w = width;
+	spriteRect.h = height;
+
+	SDL_Rect drawRect;
+	drawRect.x = dstX;
+	drawRect.y = dstY;
+	drawRect.w = width;
+	drawRect.h = height;
+
+	SDL_BlitSurface( spriteSurface, &spriteRect , drawOnSurface, &drawRect );
 }

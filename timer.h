@@ -13,7 +13,7 @@ public:
 	void			 		SetFrameRate( int fps ); 
 	bool					IsItTime();	 // Returns true if it has hit the framerate
 private:
-	int						timer; // Timer for frame rate
+	Uint32					timer; // Timer for frame rate
 	int						frameRate; // frameRate = 1000 / fps
 };
 
