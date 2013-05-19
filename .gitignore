@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+main
 
 # Compiled Dynamic libraries
 *.so
@@ -16,3 +17,7 @@
 *.gch
 *.swp
 *.swo
+
+# Needed Files, but Can't Share
+*.dll
+*.ttf
