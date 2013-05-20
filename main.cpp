@@ -6,7 +6,7 @@ int main( int argc, char **argv ) {
 	// Setup graphics engine
 	Graphics Engine;
 	Engine.Init( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_CAPTION );
-	Engine.SetBackgroundColor( 0, 255, 255 );
+	Engine.SetBackgroundColor( 225, 225, 225 );
 
 	// Test bitmap
 	SDL_Surface* bitmap = SDL_LoadBMP("bat.bmp");
@@ -54,9 +54,11 @@ int main( int argc, char **argv ) {
 		Engine.DrawScene();
 
 		// Cap the frame rate
+		/*
 		if( TimePiece.DelayTime() ) {
 			TimePiece.Delay();
 		}
+		*/
 	}
 
 	SDL_FreeSurface( bitmap );
