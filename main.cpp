@@ -44,12 +44,7 @@ int main( int argc, char **argv ) {
 			FPSTimer.StartTime();
 			frame = 0;
 			
-			printf("Current FPS is %i.\n", currentFPS );
-			/*
-			std::stringstream caption;
-			caption << "Average Frames Per Second: " << currentFPS;
-			SDL_WM_SetCaption( caption.str().c_str(), NULL );
-			*/
+			// printf("Current FPS is %i.\n", currentFPS );
 		}
 		
 		++frame;		

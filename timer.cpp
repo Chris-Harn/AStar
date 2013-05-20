@@ -34,3 +34,7 @@ bool Timer::DelayTime() {
 void Timer::Delay() {
 	SDL_Delay( ( 1000 / frameRate ) - ( SDL_GetTicks() - timer ) );
 }
+
+Uint32 Timer::GetTicks() {
+	return ( SDL_GetTicks() - timer );
+}

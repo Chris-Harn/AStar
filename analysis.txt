@@ -1,0 +1,207 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00      703     0.00     0.00  Timer::StartTime()
+  0.00      0.00     0.00      682     0.00     0.00  Timer::Delay()
+  0.00      0.00     0.00      682     0.00     0.00  Timer::IsItTime()
+  0.00      0.00     0.00      682     0.00     0.00  Timer::DelayTime()
+  0.00      0.00     0.00      682     0.00     0.00  Graphics::ClearScene()
+  0.00      0.00     0.00      682     0.00     0.00  Graphics::DrawSprite(SDL_Surface*, int, int, int, int, int, int)
+  0.00      0.00     0.00      682     0.00     0.00  Graphics::ShowFPS(int)
+  0.00      0.00     0.00      682     0.00     0.00  Graphics::DrawScene()
+  0.00      0.00     0.00      682     0.00     0.00  char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag)
+  0.00      0.00     0.00      682     0.00     0.00  std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&)
+  0.00      0.00     0.00       20     0.00     0.00  Timer::GetTime()
+  0.00      0.00     0.00        2     0.00     0.00  Timer::SetFrameRate(int)
+  0.00      0.00     0.00        2     0.00     0.00  Timer::Timer()
+  0.00      0.00     0.00        2     0.00     0.00  Timer::~Timer()
+  0.00      0.00     0.00        1     0.00     0.00  Graphics::SetBackgroundColor(int, int, int)
+  0.00      0.00     0.00        1     0.00     0.00  Graphics::Init(int, int, char const*)
+  0.00      0.00     0.00        1     0.00     0.00  Graphics::Graphics()
+  0.00      0.00     0.00        1     0.00     0.00  Graphics::~Graphics()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00     703/703         main [4]
+[5]      0.0    0.00    0.00     703         Timer::StartTime() [5]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[6]      0.0    0.00    0.00     682         Timer::Delay() [6]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[7]      0.0    0.00    0.00     682         Timer::IsItTime() [7]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[8]      0.0    0.00    0.00     682         Timer::DelayTime() [8]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[9]      0.0    0.00    0.00     682         Graphics::ClearScene() [9]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[10]     0.0    0.00    0.00     682         Graphics::DrawSprite(SDL_Surface*, int, int, int, int, int, int) [10]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[11]     0.0    0.00    0.00     682         Graphics::ShowFPS(int) [11]
+                0.00    0.00     682/682         std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&) [14]
+-----------------------------------------------
+                0.00    0.00     682/682         main [4]
+[12]     0.0    0.00    0.00     682         Graphics::DrawScene() [12]
+-----------------------------------------------
+                0.00    0.00     682/682         std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&) [14]
+[13]     0.0    0.00    0.00     682         char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00     682/682         Graphics::ShowFPS(int) [11]
+[14]     0.0    0.00    0.00     682         std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&) [14]
+                0.00    0.00     682/682         char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag) [13]
+-----------------------------------------------
+                0.00    0.00      20/20          main [4]
+[15]     0.0    0.00    0.00      20         Timer::GetTime() [15]
+-----------------------------------------------
+                0.00    0.00       2/2           main [4]
+[16]     0.0    0.00    0.00       2         Timer::SetFrameRate(int) [16]
+-----------------------------------------------
+                0.00    0.00       2/2           main [4]
+[17]     0.0    0.00    0.00       2         Timer::Timer() [17]
+-----------------------------------------------
+                0.00    0.00       2/2           main [4]
+[18]     0.0    0.00    0.00       2         Timer::~Timer() [18]
+-----------------------------------------------
+                0.00    0.00       1/1           main [4]
+[19]     0.0    0.00    0.00       1         Graphics::SetBackgroundColor(int, int, int) [19]
+-----------------------------------------------
+                0.00    0.00       1/1           main [4]
+[20]     0.0    0.00    0.00       1         Graphics::Init(int, int, char const*) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           main [4]
+[21]     0.0    0.00    0.00       1         Graphics::Graphics() [21]
+-----------------------------------------------
+                0.00    0.00       1/1           main [4]
+[22]     0.0    0.00    0.00       1         Graphics::~Graphics() [22]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+  [16] Timer::SetFrameRate(int) [17] Timer::Timer()       [11] Graphics::ShowFPS(int)
+   [6] Timer::Delay()         [18] Timer::~Timer()        [12] Graphics::DrawScene()
+  [15] Timer::GetTime()        [9] Graphics::ClearScene() [21] Graphics::Graphics()
+   [7] Timer::IsItTime()      [10] Graphics::DrawSprite(SDL_Surface*, int, int, int, int, int, int) [22] Graphics::~Graphics()
+   [8] Timer::DelayTime()     [19] Graphics::SetBackgroundColor(int, int, int) [13] char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag)
+   [5] Timer::StartTime()     [20] Graphics::Init(int, int, char const*) [14] std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&)
