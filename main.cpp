@@ -46,7 +46,7 @@ int main( int argc, char **argv ) {
 			FPSTimer.StartTime();
 			frame = 0;
 			
-			// printf("Current FPS is %i.\n", currentFPS );
+			printf("Current FPS is %i.\n", currentFPS );
 			/*
 			std::stringstream caption;
 			caption << "Average Frames Per Second: " << currentFPS;
@@ -56,7 +56,7 @@ int main( int argc, char **argv ) {
 		
 		Engine.ClearScene();
 		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
-		Engine.ShowFPS( currentFPS );
+		// Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
 
 		/*		

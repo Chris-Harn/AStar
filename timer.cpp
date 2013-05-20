@@ -17,10 +17,10 @@ int Timer::GetTime() {
 }
 
 void Timer::SetFrameRate( int fps ) {
-	if( fps <=  1 ) 
+	if( fps <  1 ) 
 		frameRate = 1000;
 	else
-		frameRate = 1000 / fps;
+		frameRate = (int) ( 1000.0 / fps );
 }
 
 bool Timer::IsItTime() {

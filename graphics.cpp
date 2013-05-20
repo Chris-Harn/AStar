@@ -39,7 +39,7 @@ void Graphics::SetBackgroundColor( int red, int green, int blue ) {
 }
 
 void Graphics::ClearScene() {
-	SDL_FillRect( Window, NULL, SDL_MapRGB( Window->format, bgR, bgG, bgB ) );
+	// SDL_FillRect( Window, NULL, SDL_MapRGB( Window->format, bgR, bgG, bgB ) );
 }
 
 void Graphics::DrawScene() {
