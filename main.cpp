@@ -13,8 +13,7 @@ int main( int argc, char **argv ) {
 
 	// Setup timers
 	Timer TimePiece;
-	TimePiece.SetFrameRate( 30 );
-	TimePiece.StartTime();
+	TimePiece.SetFrameRate( FRAMERATE );
 
 	Timer FPSTimer;
 	FPSTimer.SetFrameRate( 1 );
@@ -26,8 +25,8 @@ int main( int argc, char **argv ) {
 	SDL_Event event;
 
 	while( Engine.Running ) {
-		++frame;		
-	
+		TimePiece.StartTime();
+		
 		if( SDL_PollEvent( &event ) ) {
 			if( event.type == SDL_QUIT ) {
 				Engine.Running = false;
@@ -39,8 +38,7 @@ int main( int argc, char **argv ) {
 				Engine.Running = false;
 			}
 		}
-
-		
+	
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTime() / 1000.f ) ); 
 			FPSTimer.StartTime();
@@ -54,18 +52,16 @@ int main( int argc, char **argv ) {
 			*/
 		}
 		
-		Engine.ClearScene();
-		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
+		++frame;		
+		// Engine.ClearScene();
+		// Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
 		// Engine.ShowFPS( currentFPS );
-		Engine.DrawScene();
+		// Engine.DrawScene();
 
-		/*		
 		// Cap the frame rate
-		if( !TimePiece.IsItTime() ) {
-			SDL_Delay( ( 1000 / 30 ) - TimePiece.GetTime() );
-			TimePiece.StartTime();
+		if( TimePiece.GetTime() < 1000 / FRAMERATE ) {
+			SDL_Delay( ( 1000 / FRAMERATE ) - TimePiece.GetTime() );
 		}
-		*/
 	}
 
 	SDL_FreeSurface( bitmap );

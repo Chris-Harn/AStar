@@ -12,6 +12,7 @@ public:
 	int						GetTime(); // Return SDL_GetTicks
 	void			 		SetFrameRate( int fps ); 
 	bool					IsItTime();	 // Returns true if it has hit the framerate
+	bool					DelayTime(); // Returns true if it hasn't hit the framerate
 private:
 	Uint32					timer; // Timer for frame rate
 	int						frameRate; // frameRate = 1000 / fps
