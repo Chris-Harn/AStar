@@ -13,9 +13,10 @@ public:
 	void			 		SetFrameRate( int fps ); 
 	bool					IsItTime();	 // Returns true if it has hit the framerate
 	bool					DelayTime(); // Returns true if it hasn't hit the framerate
+	void					Delay(); // Delays the difference of DelayTime()
 private:
 	Uint32					timer; // Timer for frame rate
-	int						frameRate; // frameRate = 1000 / fps
+	Uint32					frameRate; // frameRate = 1000 / fps
 };
 
 #endif

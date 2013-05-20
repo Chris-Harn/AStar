@@ -53,14 +53,14 @@ int main( int argc, char **argv ) {
 		}
 		
 		++frame;		
-		// Engine.ClearScene();
-		// Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
-		// Engine.ShowFPS( currentFPS );
-		// Engine.DrawScene();
+		Engine.ClearScene();
+		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
+		Engine.ShowFPS( currentFPS );
+		Engine.DrawScene();
 
 		// Cap the frame rate
-		if( TimePiece.GetTime() < 1000 / FRAMERATE ) {
-			SDL_Delay( ( 1000 / FRAMERATE ) - TimePiece.GetTime() );
+		if( TimePiece.DelayTime() ) {
+			TimePiece.Delay();
 		}
 	}
 

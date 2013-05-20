@@ -28,5 +28,9 @@ bool Timer::IsItTime() {
 }
 
 bool Timer::DelayTime() {
-	return ( SDL_GetTicks() - timer < 1000 / frameRate );
+	return ( ( SDL_GetTicks() - timer ) < ( 1000 / frameRate ) );
+}
+
+void Timer::Delay() {
+	SDL_Delay( ( 1000 / frameRate ) - ( SDL_GetTicks() - timer ) );
 }
