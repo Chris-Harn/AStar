@@ -40,7 +40,7 @@ int main( int argc, char **argv ) {
 		}
 	
 		if( FPSTimer.IsItTime() ) {
-			currentFPS = (int) ( frame / ( FPSTimer.GetTime() / 1000.f ) ); 
+			currentFPS = (int) ( frame / ( FPSTimer.GetTicks() / 1000.f ) ); 
 			FPSTimer.StartTime();
 			frame = 0;
 			
@@ -48,7 +48,7 @@ int main( int argc, char **argv ) {
 		}
 		
 		++frame;		
-		Engine.ClearScene();
+		Engine.ClearScene();	
 		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
 		Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
