@@ -9,6 +9,7 @@ Graphics::Graphics() {
 }
 
 Graphics::~Graphics() {
+	SDL_FreeSurface( textSurface ); 	
 	SDL_FreeSurface( Window );
 	TTF_CloseFont( font );
 
@@ -18,7 +19,7 @@ Graphics::~Graphics() {
 
 void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	TTF_Init();
-	Window = SDL_SetVideoMode( windowWidth, windowHeight, 16, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+	Window = SDL_SetVideoMode( windowWidth, windowHeight, 8, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
 	
 	if( Window == NULL ) {
 		printf( "Window failed to set up correct.\n" );
@@ -30,6 +31,8 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 
 	// Optimizing and testing font
 	font = TTF_OpenFont( "arial.ttf", 12 );
+	SDL_Color textColor = { 0, 0, 0 };
+	textSurface = NULL;
 }
 
 void Graphics::SetBackgroundColor( int red, int green, int blue ) {
@@ -47,21 +50,14 @@ void Graphics::DrawScene() {
 }
 
 void Graphics::ShowFPS( int fps ) {
-	// TTF_Font* font = TTF_OpenFont( "arial.ttf", 12 );
-
-	SDL_Color textColor = { 0, 0, 0 };
-
 	std::ostringstream text;
 	text << fps << " FPS ";
 
-	SDL_Surface* textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
+	textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
 
 	SDL_Rect location = { 15, 15, 0, 0 };
 
 	SDL_BlitSurface( textSurface, NULL, Window, &location );
-
-	SDL_FreeSurface( textSurface ); 	
-	// TTF_CloseFont( font );
 }
 
 void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {

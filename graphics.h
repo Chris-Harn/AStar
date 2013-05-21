@@ -14,12 +14,13 @@ public:
 	void					ClearScene();
 	void					DrawScene();
 	void					ShowFPS( int fps );
-	bool					Running;
+	bool					Running;	
 	void					DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
 	SDL_Color				textColor;
+	SDL_Surface*			textSurface;
 
 	// Background - Clear Screen Color
 	int  					bgR;

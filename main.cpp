@@ -53,7 +53,7 @@ int main( int argc, char **argv ) {
 		Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
 
-		// Cap the frame rate
+		// Cap the frame rate	
 		/*
 		if( TimePiece.DelayTime() ) {
 			TimePiece.Delay();
