@@ -31,13 +31,25 @@ int main( int argc, char **argv ) {
 			if( event.type == SDL_QUIT ) {
 				Engine.Running = false;
 			}
-		}
 
-		if( event.type == SDL_KEYUP ) {
-			if( event.key.keysym.sym == SDLK_ESCAPE ) {
-				Engine.Running = false;
+			if( event.type == SDL_MOUSEBUTTONDOWN ) {
+				if( event.button.button == SDL_BUTTON_LEFT ) {
+					printf("X: %d\tY: %d", event.button.x, event.button.y );
+				}
+			}
+
+			if( event.type == SDL_MOUSEBUTTONUP ) {
+
+			}
+	
+			if( event.type == SDL_KEYUP ) {
+				if( event.key.keysym.sym == SDLK_ESCAPE ) {
+					Engine.Running = false;
+				}
 			}
 		}
+
+
 
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTicks() / 1000.f ) ); 
