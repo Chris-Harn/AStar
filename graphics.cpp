@@ -19,7 +19,8 @@ Graphics::~Graphics() {
 
 void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	TTF_Init();
-	Window = SDL_SetVideoMode( windowWidth, windowHeight, 8, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+	// Window = SDL_SetVideoMode( windowWidth, windowHeight, 8, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_FULLSCREEN );
+	Window = SDL_SetVideoMode( windowWidth, windowHeight, 8, SDL_HWSURFACE | SDL_DOUBLEBUF );
 	
 	if( Window == NULL ) {
 		printf( "Window failed to set up correct.\n" );

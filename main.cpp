@@ -8,9 +8,6 @@ int main( int argc, char **argv ) {
 	Engine.Init( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_CAPTION );
 	Engine.SetBackgroundColor( 225, 225, 225 );
 
-	// Test bitmap
-	SDL_Surface* bitmap = SDL_LoadBMP("bat.bmp");
-
 	// Setup timers
 	Timer TimePiece;
 	TimePiece.SetFrameRate( FRAMERATE );
@@ -23,6 +20,7 @@ int main( int argc, char **argv ) {
 	int currentFPS = 0;
 	
 	SDL_Event event;
+	SDL_ShowCursor( SDL_ENABLE );
 
 	while( Engine.Running ) {
 		TimePiece.StartTime();
@@ -34,12 +32,18 @@ int main( int argc, char **argv ) {
 
 			if( event.type == SDL_MOUSEBUTTONDOWN ) {
 				if( event.button.button == SDL_BUTTON_LEFT ) {
-					printf("X: %d\tY: %d", event.button.x, event.button.y );
+						
+					printf("X: %d\tY: %d\n", event.button.x, event.button.y );
+				}
+				else if( event.button.button == SDL_BUTTON_RIGHT ) {
+					printf("Reset the simulation.");
 				}
 			}
 
 			if( event.type == SDL_MOUSEBUTTONUP ) {
+				if( event.button.button == SDL_BUTTON_LEFT ) {
 
+				}
 			}
 	
 			if( event.type == SDL_KEYUP ) {
@@ -61,7 +65,6 @@ int main( int argc, char **argv ) {
 		++frame;		
 		Engine.ClearScene();	
 		Engine.DrawBoard();
-		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
 		Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
 
@@ -73,7 +76,5 @@ int main( int argc, char **argv ) {
 		*/
 	}
 		
-	SDL_FreeSurface( bitmap );
-
 	return 0;
 }	

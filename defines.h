@@ -16,5 +16,9 @@
 #define BOX_WIDTH 60
 #define BOX_HEIGHT 70
 
+// Selectable squares inside the grid
+#define MOUSE_BOX_WIDTH 7
+#define MOUSE_BOX_HEIGHT 5
+
 #endif
 
