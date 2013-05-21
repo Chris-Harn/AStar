@@ -38,29 +38,31 @@ int main( int argc, char **argv ) {
 				Engine.Running = false;
 			}
 		}
-	
+
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTicks() / 1000.f ) ); 
 			FPSTimer.StartTime();
 			frame = 0;
-			
-			// printf("Current FPS is %i.\n", currentFPS );
 		}
+		
 		
 		++frame;		
 		Engine.ClearScene();	
+		Engine.DrawBoard();
 		Engine.DrawSprite( bitmap, 24, 63, 100, 100, 65, 44 );
 		Engine.ShowFPS( currentFPS );
 		Engine.DrawScene();
 
-		// Cap the frame rate	
 		/*
+		// Cap the frame rate
 		if( TimePiece.DelayTime() ) {
 			TimePiece.Delay();
 		}
 		*/
 	}
 
+	printf("\nProgram finished before the segmentation fault.\n\n");
+		
 	SDL_FreeSurface( bitmap );
 
 	return 0;

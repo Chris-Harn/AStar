@@ -7,11 +7,9 @@ Graphics::Graphics() {
 
 	Window = NULL;
 	font = NULL;
-	textSurface = NULL;
 }
 
 Graphics::~Graphics() {
-	SDL_FreeSurface( textSurface ); 	
 	SDL_FreeSurface( Window );
 	TTF_CloseFont( font );
 
@@ -55,13 +53,13 @@ void Graphics::ShowFPS( int fps ) {
 	std::ostringstream text;
 	text << fps << " FPS ";
 
-	textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
+	SDL_Surface* textSurface = TTF_RenderText_Solid( font, text.str().c_str(), textColor );
 
 	SDL_Rect location = { 15, 15, 0, 0 };
 
 	SDL_BlitSurface( textSurface, NULL, Window, &location );
-
-	SDL_FreeSurface( textSurface );
+	
+	SDL_FreeSurface( textSurface ); 	
 }
 
 void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {
@@ -78,4 +76,14 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 	drawRect.h = height;
 
 	SDL_BlitSurface( spriteSurface, &spriteRect , Window, &drawRect );
+}
+
+void Graphics::DrawBoard() {
+	for( int i = 0; i < 5; i++ ) {
+		// lineRGBA( Window, ( i * BOX_WIDTH ) + 5, 0, ( i * BOX_WIDTH ) + 5, 420, 255, 255, 255, 255 );
+	}
+
+	for( int i = 0; i < 7; i++ ) {
+//		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 360, (i * BOX_HEIGHT ) + 5, 0, 0, 0, 255 );
+	}
 }

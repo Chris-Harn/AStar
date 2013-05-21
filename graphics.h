@@ -1,9 +1,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "SDL/SDL.h"
-#include "SDL/SDL_ttf.h"
-#include <sstream>
+#include "defines.h"
 
 class Graphics {	
 public:
@@ -16,10 +14,10 @@ public:
 	void					ShowFPS( int fps );
 	bool					Running;	
 	void					DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
+	void					DrawBoard();
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
-	SDL_Surface*			textSurface;
 
 	// Background - Clear Screen Color
 	int  					bgR;
