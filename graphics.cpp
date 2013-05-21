@@ -5,7 +5,9 @@ Graphics::Graphics() {
 		printf( "SDL_Init_Video failed: %s\n", SDL_GetError() );
 	}
 
+	Window = NULL;
 	font = NULL;
+	textSurface = NULL;
 }
 
 Graphics::~Graphics() {
@@ -31,8 +33,6 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 
 	// Optimizing and testing font
 	font = TTF_OpenFont( "arial.ttf", 12 );
-	SDL_Color textColor = { 0, 0, 0 };
-	textSurface = NULL;
 }
 
 void Graphics::SetBackgroundColor( int red, int green, int blue ) {
@@ -49,7 +49,9 @@ void Graphics::DrawScene() {
 	SDL_Flip( Window );
 }
 
-void Graphics::ShowFPS( int fps ) {
+void Graphics::ShowFPS( int fps ) {	
+	SDL_Color textColor = { 0, 0, 0 };
+
 	std::ostringstream text;
 	text << fps << " FPS ";
 
@@ -58,6 +60,8 @@ void Graphics::ShowFPS( int fps ) {
 	SDL_Rect location = { 15, 15, 0, 0 };
 
 	SDL_BlitSurface( textSurface, NULL, Window, &location );
+
+	SDL_FreeSurface( textSurface );
 }
 
 void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height ) {

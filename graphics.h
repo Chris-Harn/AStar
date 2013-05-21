@@ -19,7 +19,6 @@ public:
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
-	SDL_Color				textColor;
 	SDL_Surface*			textSurface;
 
 	// Background - Clear Screen Color
