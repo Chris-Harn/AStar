@@ -80,7 +80,7 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 
 void Graphics::DrawBoard() {
 	for( int i = 0; i < 5; i++ ) {
-		// lineRGBA( Window, ( i * BOX_WIDTH ) + 5, 0, ( i * BOX_WIDTH ) + 5, 420, 255, 255, 255, 255 );
+		lineRGBA( Window, ( i * BOX_WIDTH ) + 5, 0, ( i * BOX_WIDTH ) + 5, 420, 255, 255, 255, 255 );
 	}
 
 	for( int i = 0; i < 7; i++ ) {
