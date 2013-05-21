@@ -60,8 +60,6 @@ int main( int argc, char **argv ) {
 		}
 		*/
 	}
-
-	printf("\nProgram finished before the segmentation fault.\n\n");
 		
 	SDL_FreeSurface( bitmap );
 

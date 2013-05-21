@@ -84,6 +84,6 @@ void Graphics::DrawBoard() {
 	}
 
 	for( int i = 0; i < 7; i++ ) {
-//		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 360, (i * BOX_HEIGHT ) + 5, 0, 0, 0, 255 );
+		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 360, (i * BOX_HEIGHT ) + 5, 0, 0, 0, 255 );
 	}
 }
