@@ -20,6 +20,7 @@ public:
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
+	// empty = 0, open = 1, closed = 2, blocked = 3
 	int						grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
 
 	// Background - Clear Screen Color

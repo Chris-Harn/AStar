@@ -8,9 +8,10 @@ public:
 								Square();
 								~Square();	
 private:
-	Square*						parent; // parent Square
+	Square*						_parent; // parent Square
 	int 						G; // Movement cost = parent cost + cost to move
 	int							H; // Estimated cost to finish
+	int							F; // G + H = total cost
 };
 
 #endif 

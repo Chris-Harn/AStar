@@ -14,9 +14,9 @@ Graphics::Graphics() {
 			grid[ x ][ y ] = 0;
 		}
 	}
-	grid[3][1] = 2;	
-	grid[3][2] = 2;	
-	grid[3][3] = 2;	
+	grid[3][1] = 3;	
+	grid[3][2] = 3;	
+	grid[3][3] = 3;	
 }
 
 Graphics::~Graphics() {
@@ -97,10 +97,11 @@ void Graphics::DrawBoard() {
 	for( int i = 0; i < MOUSE_BOX_HEIGHT; i++ ) {
 		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 430, (i * BOX_HEIGHT ) + 5, 0, 230, 230, 255 );
 	}
-	
+
+	// empty = 0, open = 1, closed = 2, blocked = 3	
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
-			if( grid[ x ][ y ] == 2 ) {
+			if( grid[ x ][ y ] == 3 ) {
 				boxRGBA( Window, ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5, ( x * BOX_WIDTH ) + BOX_WIDTH + 5, ( y * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 60, 60, 255 );
 			}
 		}
