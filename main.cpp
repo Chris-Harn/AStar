@@ -31,12 +31,11 @@ int main( int argc, char **argv ) {
 			}
 
 			if( event.type == SDL_MOUSEBUTTONDOWN ) {
-				if( event.button.button == SDL_BUTTON_LEFT ) {
-						
-					printf("X: %d\tY: %d\n", event.button.x, event.button.y );
+				if( event.button.button == SDL_BUTTON_LEFT ) {	
+					Engine.MouseLeftDown( event.button.x, event.button.y );	
 				}
 				else if( event.button.button == SDL_BUTTON_RIGHT ) {
-					printf("Reset the simulation.");
+					Engine.MouseRightDown();
 				}
 			}
 

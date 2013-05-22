@@ -15,9 +15,12 @@ public:
 	bool					Running;	
 	void					DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
 	void					DrawBoard();
+	void					MouseLeftDown( int x, int y );
+	void 					MouseRightDown();
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;
+	int						grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
 
 	// Background - Clear Screen Color
 	int  					bgR;

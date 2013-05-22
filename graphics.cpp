@@ -88,3 +88,18 @@ void Graphics::DrawBoard() {
 		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 430, (i * BOX_HEIGHT ) + 5, 0, 230, 230, 255 );
 	}
 }
+
+void Graphics::MouseLeftDown( int x, int y ) {
+	printf("X: %d\tY: %d\n", x, y );
+}
+
+void Graphics::MouseRightDown() {
+	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
+		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
+
+		}
+	}
+
+	printf("Reset the simulation.\n");
+	
+}
