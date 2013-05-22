@@ -2,6 +2,7 @@
 #define GRAPHICS_H
 
 #include "defines.h"
+#include "squares.h"
 
 class Graphics {	
 public:
