@@ -2,7 +2,7 @@
 #define GRAPHICS_H
 
 #include "defines.h"
-#include "squares.h"
+#include "square.h"
 
 class Graphics {	
 public:
@@ -23,7 +23,8 @@ private:
 	TTF_Font*				font;
 	// empty = 0, open = 1, closed = 2, blocked = 3
 	int						grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
-
+	Square					*pt_grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
+	
 	// Background - Clear Screen Color
 	int  					bgR;
 	int						bgG;

@@ -12,8 +12,10 @@ Graphics::Graphics() {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
+			pt_grid[ x ][ y ] = NULL;
 		}
 	}
+
 	grid[3][1] = 3;	
 	grid[3][2] = 3;	
 	grid[3][3] = 3;	
@@ -130,9 +132,9 @@ void Graphics::MouseRightDown() {
 			grid[ x ][ y ] = 0;
 		}
 	}
-	grid[3][1] = 2;	
-	grid[3][2] = 2;	
-	grid[3][3] = 2;	
+	grid[3][1] = 3;	
+	grid[3][2] = 3;	
+	grid[3][3] = 3;	
 	
 	printf("Reset the simulation.\n");	
 }
