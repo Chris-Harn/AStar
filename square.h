@@ -7,6 +7,7 @@ class Square {
 public:
 								Square();
 								~Square();	
+								Square( Square *parent, int GScore );
 private:
 	Square*						_parent; // parent Square
 	int 						G; // Movement cost = parent cost + cost to move

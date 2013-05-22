@@ -12,3 +12,13 @@ Square::~Square() {
 		delete _parent;
 	}
 }
+
+Square::Square( Square* parent, int GScore ) {
+	_parent = parent;
+	G = GScore;
+	
+	// Use heurestic to figured out H
+	H = 10;
+
+	F = G + H;
+}
