@@ -90,6 +90,18 @@ void Graphics::DrawBoard() {
 }
 
 void Graphics::MouseLeftDown( int x, int y ) {
+	if( x < 5 || x > 425 ) {
+		printf("Outside X range.\n");
+		return;
+	}
+	else if( y < 5 || y > 355 ) {
+		printf("Outside Y range.\n");
+		return;
+	}
+
+	x = x / BOX_WIDTH;
+	y = y /  BOX_HEIGHT;
+
 	printf("X: %d\tY: %d\n", x, y );
 }
 
