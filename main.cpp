@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "graphics.h"
 #include "timer.h"
+#include "square.h"
 
 int main( int argc, char **argv ) {
 	// Setup graphics engine
