@@ -7,6 +7,16 @@ Graphics::Graphics() {
 
 	Window = NULL;
 	font = NULL;
+
+	// Set up board: 0 = empty, 1 = inside search, 2 = blocked
+	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
+		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
+			grid[ x ][ y ] = 0;
+		}
+	}
+	grid[3][1] = 2;	
+	grid[3][2] = 2;	
+	grid[3][3] = 2;	
 }
 
 Graphics::~Graphics() {
@@ -80,12 +90,20 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 }
 
 void Graphics::DrawBoard() {
-	for( int i = 0; i < 8; i++ ) {
+	for( int i = 0; i < MOUSE_BOX_WIDTH; i++ ) {
 		lineRGBA( Window, ( i * BOX_WIDTH ) + 5, 0, ( i * BOX_WIDTH ) + 5, 360, 0, 230, 230, 255 );
 	}
 
-	for( int i = 0; i < 6; i++ ) {
+	for( int i = 0; i < MOUSE_BOX_HEIGHT; i++ ) {
 		lineRGBA( Window, 0, ( i * BOX_HEIGHT ) + 5, 430, (i * BOX_HEIGHT ) + 5, 0, 230, 230, 255 );
+	}
+	
+	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
+		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
+			if( grid[ x ][ y ] == 2 ) {
+				boxRGBA( Window, ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5, ( x * BOX_WIDTH ) + BOX_WIDTH + 5, ( y * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 60, 60, 255 );
+			}
+		}
 	}
 }
 
@@ -102,16 +120,18 @@ void Graphics::MouseLeftDown( int x, int y ) {
 	x = x / BOX_WIDTH;
 	y = y /  BOX_HEIGHT;
 
-	printf("X: %d\tY: %d\n", x, y );
+	printf("X: %d\tY: %d\tValue == %d\n", x, y, grid[x][y] );
 }
 
 void Graphics::MouseRightDown() {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
-
+			grid[ x ][ y ] = 0;
 		}
 	}
-
-	printf("Reset the simulation.\n");
+	grid[3][1] = 2;	
+	grid[3][2] = 2;	
+	grid[3][3] = 2;	
 	
+	printf("Reset the simulation.\n");	
 }
