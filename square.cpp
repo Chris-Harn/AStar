@@ -35,3 +35,11 @@ int Square::getG() {
 int Square::getF() {
 	return F;
 }
+
+int Square::getX() {
+	return xPos;
+}
+
+int Square::getY() {
+	return yPos;
+}
