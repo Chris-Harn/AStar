@@ -8,11 +8,11 @@ public:
 								Square();
 								~Square();	
 								Square( Square *parent, int GScore, int x, int y );
-	int							getG();
-	int							getF();
-	int							getX();
-	int							getY();
-	int							estimateDistance( int xDest, int yDest );
+	int							GetG();
+	int							GetF();
+	int							GetX();
+	int							GetY();
+	int							EstimateDistance( int xDest, int yDest );
 private:
 	Square*						_parent; // parent Square
 	int 						G; // Movement cost = parent cost + cost to move

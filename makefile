@@ -19,4 +19,4 @@ square.o: square.cpp
 
 
 clean:
-		-rm -f *.o *.gch *.swn *.swo main *.out *.txt *.swp *.gch
+		-rm -f *.o *.gch *.swn *.swo main *.out *.txt *.swp

@@ -12,6 +12,7 @@ Square::Square() {
 Square::~Square() {
  	if( _parent != NULL ) {
 		delete _parent;
+		_parent = NULL;
 	}
 }
 
@@ -28,23 +29,23 @@ Square::Square( Square* parent, int GScore, int x, int y ) {
 	F = G + H;
 }
 
-int Square::getG() {
+int Square::GetG() {
 	return G;
 }
 
-int Square::getF() {
+int Square::GetF() {
 	return F;
 }
 
-int Square::getX() {
+int Square::GetX() {
 	return xPos;
 }
 
-int Square::getY() {
+int Square::GetY() {
 	return yPos;
 }
 
-int estimateDistance( int xDest, int yDest ) {
+int Square::EstimateDistance( int xDest, int yDest ) {
 	int xd, yd;
 	xd = xDest - xPos;
 	yd = yDest - yPos;
@@ -53,6 +54,5 @@ int estimateDistance( int xDest, int yDest ) {
 	return( abs(xd) + abs(yd) );
 
 	// Euclidian Distance
-	// return ( (int) (sqrt( xd * xd + yd * yd ) ) );
-	
+	// return ( (int) (sqrt( xd * xd + yd * yd ) ) );	
 }
