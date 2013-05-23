@@ -17,6 +17,7 @@ main
 *.gch
 *.swp
 *.swo
+*.swn
 
 # Needed Files, but Can't Share
 *.dll
