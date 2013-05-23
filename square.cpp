@@ -27,3 +27,11 @@ Square::Square( Square* parent, int GScore, int x, int y ) {
 
 	F = G + H;
 }
+
+int Square::getG() {
+	return G;
+}
+
+int Square::getF() {
+	return F;
+}
