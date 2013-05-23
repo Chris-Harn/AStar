@@ -12,6 +12,7 @@ public:
 	int							getF();
 	int							getX();
 	int							getY();
+	int							estimateDistance( int xDest, int yDest );
 private:
 	Square*						_parent; // parent Square
 	int 						G; // Movement cost = parent cost + cost to move

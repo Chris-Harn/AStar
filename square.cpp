@@ -43,3 +43,16 @@ int Square::getX() {
 int Square::getY() {
 	return yPos;
 }
+
+int estimateDistance( int xDest, int yDest ) {
+	int xd, yd;
+	xd = xDest - xPos;
+	yd = yDest - yPos;
+
+	// Manhattan distance
+	return( abs(xd) + abs(yd) );
+
+	// Euclidian Distance
+	// return ( (int) (sqrt( xd * xd + yd * yd ) ) );
+	
+}
