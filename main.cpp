@@ -55,13 +55,13 @@ int main( int argc, char **argv ) {
 
 
 
+
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTicks() / 1000.f ) ); 
 			FPSTimer.StartTime();
 			frame = 0;
 		}
-		
-		
+				
 		++frame;		
 		Engine.ClearScene();	
 		Engine.DrawBoard();

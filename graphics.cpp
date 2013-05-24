@@ -8,7 +8,7 @@ Graphics::Graphics() {
 	Window = NULL;
 	font = NULL;
 
-	// Set up board: 0 = empty, 1 = inside search, 2 = blocked
+	// Set up board: 0 = empty, 1 = open list, 2 = closed list, 3 = blocked
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
@@ -19,6 +19,9 @@ Graphics::Graphics() {
 	grid[3][1] = 3;	
 	grid[3][2] = 3;	
 	grid[3][3] = 3;	
+
+	currentX = X_Start;
+	currentY = Y_Start;
 }
 
 Graphics::~Graphics() {
@@ -137,4 +140,12 @@ void Graphics::MouseRightDown() {
 	grid[3][3] = 3;	
 	
 	printf("Reset the simulation.\n");	
+}
+
+void Graphics::findPath( int xDest, int yDest ) {
+	destinationX = xDest;
+	destinationY = yDest;
+
+	openList = 0;
+	
 }
