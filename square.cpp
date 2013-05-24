@@ -16,7 +16,7 @@ Square::~Square() {
 	}
 }
 
-Square::Square( Square* parent, int GScore, int x, int y ) {
+Square::Square( Square* parent, int GScore, int x, int y, int xDest, int yDest ) {
 	_parent = parent;
 	G = GScore;
 
@@ -24,7 +24,7 @@ Square::Square( Square* parent, int GScore, int x, int y ) {
 	yPos = y;
 	
 	// Use heurestic to figured out H
-	H = 10;
+	H = EstimateDistance( xDest, yDest );
 
 	F = G + H;
 }

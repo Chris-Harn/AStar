@@ -18,7 +18,7 @@ public:
 	void					DrawBoard();
 	void					MouseLeftDown( int x, int y );
 	void 					MouseRightDown();
-	void					findPath( int xDest, int yDest );
+	void					findPath( int xInit, int yInit, int xDest, int yDest );
 private:
 	SDL_Surface* 			Window;
 	TTF_Font*				font;

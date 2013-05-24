@@ -5,9 +5,9 @@
 
 class Square {
 public:
-								Square();
+								Square();	
 								~Square();	
-								Square( Square *parent, int GScore, int x, int y );
+								Square( Square *parent, int GScore, int xInit, int yInit, int xDest, int yDest );
 								// G equal distance traveled
 								// H equal remaining estimated distance
 								// F = G + H

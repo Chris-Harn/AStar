@@ -127,25 +127,87 @@ void Graphics::MouseLeftDown( int x, int y ) {
 	y = y /  BOX_HEIGHT;
 
 	printf("X: %d\tY: %d\tValue == %d\n", x, y, grid[x][y] );
+
+	if( x != currentX && y != currentY ) {
+		findPath( currentX, currentY, x, y );
+	}
 }
 
 void Graphics::MouseRightDown() {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
+			delete pt_grid[ x ][ y ];
+			pt_grid[ x ][ y ] = NULL;
 		}
 	}
 	grid[3][1] = 3;	
 	grid[3][2] = 3;	
 	grid[3][3] = 3;	
 	
+	currentX = X_Start;
+	currentY = Y_Start;
+		
 	printf("Reset the simulation.\n");	
 }
 
-void Graphics::findPath( int xDest, int yDest ) {
+void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
+	currentX = xInit;
+	currentY = yInit;
+
+	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
+		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
+			grid[ x ][ y ] = 0;
+			delete pt_grid[ x ][ y ];
+			pt_grid[ x ][ y ] = NULL;
+		}
+	}
+	grid[3][1] = 3;	
+	grid[3][2] = 3;	
+	grid[3][3] = 3;	
+
+	// place holder for finding the lowest open node
+	int lowestF = 90;
+	int lowestX = 3, lowestY = 3;
+
+	// create a node containing the node_goal	
 	destinationX = xDest;
 	destinationY = yDest;
 
-	openList = 0;
+	// create a node containing the node_start
+	Square *start = new Square( NULL, 0, currentX, currentY, destinationX, destinationY );
+		
+	// put node on the openlist
+	openList = 1;	
+	grid[currentX][currentY] = 1;	
+	pt_grid[ currentX ][ currentY ] = start;
+
+	while( openList > 0 ) {
+		// Get the node off the open list with the lowest F
+		for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
+			for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
+				if( grid[ x ][ y ] == 1 ) {
+					if( pt_grid[ x ][ y ]->GetF() <= lowestF ) {
+						lowestF = pt_grid[ x ][ y ]->GetF();
+						lowestX = pt_grid[ x ][ y ]->GetX();
+						lowestY = pt_grid[ x ][ y ]->GetY();
+					}
+				}
+			}
+		}
+
+		// if current lowest node = return; Found the route
+		if( lowestX == xDest && lowestY == yDest ) {
+			printf("*** Found the end. ***\n\n");
+			return;
+		}
+		
+		// generate more open nodes for the list
+
+
 	
+		// last... close the current node
+		--openList;
+		grid[ lowestX ][ lowestY ] = 2;
+	}
 }
