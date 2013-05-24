@@ -45,13 +45,18 @@ int Square::GetY() {
 	return yPos;
 }
 
+void Square::UpdateDestination( int xDest, int yDest ) {
+	H = EstimateDistance( xDest, yDest );
+	F = G + H;
+}
+
 int Square::EstimateDistance( int xDest, int yDest ) {
 	int xd, yd;
 	xd = xDest - xPos;
 	yd = yDest - yPos;
 
 	// Manhattan distance
-	return( abs(xd) + abs(yd) );
+	return( abs(xd) + abs(yd) ) * 10;
 
 	// Euclidian Distance
 	// return ( (int) (sqrt( xd * xd + yd * yd ) ) );	

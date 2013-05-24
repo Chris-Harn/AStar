@@ -3,15 +3,19 @@
 
 #include "defines.h"
 
-class Square {	
+class Square {
 public:
 								Square();
 								~Square();	
 								Square( Square *parent, int GScore, int x, int y );
+								// G equal distance traveled
+								// H equal remaining estimated distance
+								// F = G + H
 	int							GetG();
 	int							GetF();
 	int							GetX();
 	int							GetY();
+	void						UpdateDestination( int xDest, int yDest );
 	int							EstimateDistance( int xDest, int yDest );
 private:
 	Square*						_parent; // parent Square
