@@ -131,13 +131,16 @@ void Graphics::MouseLeftDown( int x, int y ) {
 	if( x != currentX && y != currentY ) {
 		findPath( currentX, currentY, x, y );
 	}
+	else {
+		printf("Same as starting X & Y.\n");
+	}
 }
 
 void Graphics::MouseRightDown() {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
-			delete pt_grid[ x ][ y ];
+			// delete pt_grid[ x ][ y ];
 			pt_grid[ x ][ y ] = NULL;
 		}
 	}
@@ -158,7 +161,7 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
-			delete pt_grid[ x ][ y ];
+			// delete pt_grid[ x ][ y ];
 			pt_grid[ x ][ y ] = NULL;
 		}
 	}
@@ -167,8 +170,8 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 	grid[3][3] = 3;	
 
 	// place holder for finding the lowest open node
-	int lowestF = 90;
-	int lowestX = 3, lowestY = 3;
+	int lowestF = 1000;
+	int lowestX = 0, lowestY = 0;
 
 	// create a node containing the node_goal	
 	destinationX = xDest;
@@ -204,6 +207,8 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 
 		// if current lowest node = return; Found the route
 		if( lowestX == xDest && lowestY == yDest ) {
+			currentX = xDest;
+			currentY = yDest;
 			printf("*** Found the end. ***\n X: %d\tY: %d\n\n", lowestX, lowestY );
 			return;
 		}
@@ -230,7 +235,6 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 				}
 			}
 		}
-
 	
 		// last... close the current node
 		--openList;
@@ -239,4 +243,6 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 		printf("Open list = %d\n", openList );
 		printf("*******************************\n\n");
 	}
+
+	printf("\nNever found the ending node.\n");
 }
