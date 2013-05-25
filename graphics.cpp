@@ -42,7 +42,8 @@ void Graphics::Init( int windowWidth, int windowHeight, const char* caption ) {
 	}
 	
 	SDL_WM_SetCaption( caption, 0 );
-	
+	SDL_ShowCursor( SDL_ENABLE );	
+
 	Running = true;
 
 	// Optimizing and testing font
@@ -140,7 +141,6 @@ void Graphics::MouseRightDown() {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
-			// delete pt_grid[ x ][ y ];
 			pt_grid[ x ][ y ] = NULL;
 		}
 	}
@@ -161,7 +161,6 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
 			grid[ x ][ y ] = 0;
-			// delete pt_grid[ x ][ y ];
 			pt_grid[ x ][ y ] = NULL;
 		}
 	}
@@ -245,4 +244,33 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 	}
 
 	printf("\nNever found the ending node.\n");
+}
+
+void Graphics::HandleInput() {
+	if( SDL_PollEvent( &event ) ) {
+		if( event.type == SDL_QUIT ) {
+			Running = false;
+		}
+
+		if( event.type == SDL_MOUSEBUTTONDOWN ) {
+			if( event.button.button == SDL_BUTTON_LEFT ) {
+				MouseLeftDown( event.button.x, event.button.y );
+			}
+			else if( event.button.button == SDL_BUTTON_RIGHT ) {
+				MouseRightDown();
+			}
+		}
+
+		if( event.type == SDL_MOUSEBUTTONUP ) {
+			if( event.button.button == SDL_BUTTON_LEFT ) {
+				// do nothing for now		
+			}
+		}
+
+		if( event.type == SDL_KEYUP ) {
+			if( event.key.keysym.sym == SDLK_ESCAPE ) {
+				Running = false;
+			}
+		}
+	}
 }

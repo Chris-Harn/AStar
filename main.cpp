@@ -20,41 +20,12 @@ int main( int argc, char **argv ) {
 	int frame = 0;
 	int currentFPS = 0;
 	
-	SDL_Event event;
-	SDL_ShowCursor( SDL_ENABLE );
+	// SDL_ShowCursor( SDL_ENABLE );
 
 	while( Engine.Running ) {
 		TimePiece.StartTime();
-		
-		if( SDL_PollEvent( &event ) ) {
-			if( event.type == SDL_QUIT ) {
-				Engine.Running = false;
-			}
 
-			if( event.type == SDL_MOUSEBUTTONDOWN ) {
-				if( event.button.button == SDL_BUTTON_LEFT ) {	
-					Engine.MouseLeftDown( event.button.x, event.button.y );	
-				}
-				else if( event.button.button == SDL_BUTTON_RIGHT ) {
-					Engine.MouseRightDown();
-				}
-			}
-
-			if( event.type == SDL_MOUSEBUTTONUP ) {
-				if( event.button.button == SDL_BUTTON_LEFT ) {
-
-				}
-			}
-	
-			if( event.type == SDL_KEYUP ) {
-				if( event.key.keysym.sym == SDLK_ESCAPE ) {
-					Engine.Running = false;
-				}
-			}
-		}
-
-
-
+		Engine.HandleInput();
 
 		if( FPSTimer.IsItTime() ) {
 			currentFPS = (int) ( frame / ( FPSTimer.GetTicks() / 1000.f ) ); 

@@ -18,9 +18,11 @@ public:
 	void					DrawBoard();
 	void					MouseLeftDown( int x, int y );
 	void 					MouseRightDown();
-	void					findPath( int xInit, int yInit, int xDest, int yDest );
+	void					findPath( int xInit, int yInit, int xDest, int yDest );	
+	void					HandleInput();
 private:
 	SDL_Surface* 			Window;
+	SDL_Event				event;
 	TTF_Font*				font;
 	// empty = 0, open = 1, closed = 2, blocked = 3
 	int						grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
