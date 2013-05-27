@@ -277,6 +277,44 @@ void Graphics::findPath( int xInit, int yInit, int xDest, int yDest ) {
 			}
 		}
 
+		// top
+		if( lowestY - 1 >= 0 ) {
+			if( grid[ lowestX ][ lowestY - 1 ] == 0 ) {
+				printf("Making the top left square at X:%d\tY:%d\n", lowestX, lowestY - 1 );
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
+				openList++;	
+				grid[ lowestX ][ lowestY - 1 ] = 1;	
+				pt_grid[ lowestX ][ lowestY - 1 ] = node;
+			}
+			else if( grid[ lowestX ][ lowestY - 1 ] == 1 ) {
+				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX ][ lowestY - 1 ]->GetG() ) {
+					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX, lowestY - 1 );
+					delete pt_grid[ lowestX ][ lowestY - 1 ];
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
+					pt_grid[ lowestX ][ lowestY - 1 ] = node;
+				}
+			}
+		}
+
+		// bottom
+		if( lowestY + 1 < MOUSE_BOX_HEIGHT ) {
+			if( grid[ lowestX ][ lowestY + 1 ] == 0 ) {
+				printf("Making the top left square at X:%d\tY:%d\n", lowestX, lowestY + 1 );
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
+				openList++;	
+				grid[ lowestX ][ lowestY + 1 ] = 1;	
+				pt_grid[ lowestX ][ lowestY + 1 ] = node;
+			}
+			else if( grid[ lowestX ][ lowestY + 1 ] == 1 ) {
+				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX ][ lowestY + 1 ]->GetG() ) {
+					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX, lowestY + 1 );
+					delete pt_grid[ lowestX ][ lowestY + 1 ];
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
+					pt_grid[ lowestX ][ lowestY + 1 ] = node;
+				}
+			}
+		}
+
 		// last... close the current node
 		--openList;
 		grid[ lowestX ][ lowestY ] = 2;
