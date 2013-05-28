@@ -28,6 +28,8 @@ private:
 	// empty = 0, open = 1, closed = 2, blocked = 3
 	int						grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
 	Square					*pt_grid[MOUSE_BOX_WIDTH][MOUSE_BOX_HEIGHT];
+	int						startX;
+	int						startY;
 	int						currentX;
 	int						currentY;
 	int						destinationX;

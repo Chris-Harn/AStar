@@ -20,8 +20,8 @@ Graphics::Graphics() {
 	grid[3][2] = 3;	
 	grid[3][3] = 3;	
 
-	currentX = X_Start;
-	currentY = Y_Start;
+	currentX = startX = X_Start;
+	currentY = startY = Y_Start;
 }
 
 Graphics::~Graphics() {	
@@ -144,6 +144,16 @@ void Graphics::DrawBoard() {
 	else {
 		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 	}
+
+	// Draw the Begning Square - Green
+	if( pt_grid[ startX ][ startY ] != NULL ) {
+		boxRGBA( Window, ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5, ( startX * BOX_WIDTH ) + BOX_WIDTH + 5, ( startY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
+		DrawText( "F: ", pt_grid[ startX ][ startY ]->GetF(), ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5 );
+	}
+	else {
+		boxRGBA( Window, ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5, ( startX * BOX_WIDTH ) + BOX_WIDTH + 5, ( startY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
+	}
+	
 	
 	// Draw the lines
 	for( int i = 0; i <= MOUSE_BOX_WIDTH; i++ ) {
@@ -204,9 +214,9 @@ void Graphics::MouseRightDown() {
 
 void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 	MouseRightDown();
-
-	currentX = xInit;
-	currentY = yInit;
+	
+	startX = currentX = xInit;
+	startY = currentY = yInit;
 
 	// place holder for finding the lowest open node
 	int lowestF = 1000;
