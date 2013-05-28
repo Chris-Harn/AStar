@@ -94,7 +94,12 @@ void Graphics::DrawText( std::string text, int value, Sint16 x, Sint16 y ) {
 	SDL_Color textColor = { 0, 0, 0 };
 
 	std::ostringstream textToBeDrawn;
-	textToBeDrawn << text << value; 
+	if( value != -1 ) {
+		textToBeDrawn << text << value; 
+	}
+	else {
+		textToBeDrawn << text;
+	}
 
 	SDL_Surface* textSurface = TTF_RenderText_Solid( font, textToBeDrawn.str().c_str(), textColor );
 
@@ -122,7 +127,7 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 }
 
 void Graphics::DrawBoard() {
-	// Draw open, closed, and blocked squares
+	// draw open, closed, and blocked squares
 	// empty = 0, open = 1, closed = 2, blocked = 3	
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
 		for( int y = 0; y < MOUSE_BOX_HEIGHT; y++ ) {
@@ -136,26 +141,27 @@ void Graphics::DrawBoard() {
 		}
 	}
 	
-	// Draw the Current Square - Green
+	// draw the current square - green
 	if( pt_grid[ currentX ][ currentY ] != NULL ) {
 		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 		DrawText( "F: ", pt_grid[ currentX ][ currentY ]->GetF(), ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5 );
+		DrawText( "End", -1, ( currentX * BOX_WIDTH ) - 10 + BOX_WIDTH / 2, ( currentY * BOX_HEIGHT ) + 5 + BOX_WIDTH / 2 );
 	}
 	else {
 		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 	}
 
-	// Draw the Begning Square - Green
+	// draw the begining square - green
 	if( pt_grid[ startX ][ startY ] != NULL ) {
 		boxRGBA( Window, ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5, ( startX * BOX_WIDTH ) + BOX_WIDTH + 5, ( startY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 		DrawText( "F: ", pt_grid[ startX ][ startY ]->GetF(), ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5 );
+		DrawText( "Start", -1, ( startX * BOX_WIDTH ) - 10 + BOX_WIDTH / 2, ( startY * BOX_HEIGHT ) + 5 + BOX_WIDTH / 2 );
 	}
 	else {
 		boxRGBA( Window, ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5, ( startX * BOX_WIDTH ) + BOX_WIDTH + 5, ( startY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 	}
 	
-	
-	// Draw the lines
+	// draw the lines
 	for( int i = 0; i <= MOUSE_BOX_WIDTH; i++ ) {
 		lineRGBA( Window, ( i * BOX_WIDTH ) + 5, 0, ( i * BOX_WIDTH ) + 5, 360, 0, 230, 230, 255 );
 	}
@@ -206,8 +212,8 @@ void Graphics::MouseRightDown() {
 	grid[3][2] = 3;	
 	grid[3][3] = 3;	
 
-	currentX = X_Start;
-	currentY = Y_Start;
+	currentX = startX = X_Start;
+	currentY = startY = Y_Start;
 		
 	printf("Finished resetting the simulation.\n");	
 }

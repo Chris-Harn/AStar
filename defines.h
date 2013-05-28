@@ -22,8 +22,8 @@
 #define MOUSE_BOX_HEIGHT 5
 
 // Initial Start and End
-#define X_Start 0
-#define Y_Start 0
+#define X_Start 1
+#define Y_Start 2
 #define X_End 5
 #define Y_End 2
 #endif
