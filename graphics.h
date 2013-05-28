@@ -13,12 +13,13 @@ public:
 	void					ClearScene();
 	void					DrawScene();
 	void					ShowFPS( int fps );
+	void					DrawText( std::string text, int value, Sint16 x, Sint16 y );
 	bool					Running;	
 	void					DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int dstX, int dstY, int width, int height );
 	void					DrawBoard();
 	void					MouseLeftDown( int x, int y );
 	void 					MouseRightDown();
-	void					findPath( int xInit, int yInit, int xDest, int yDest );	
+	void					FindPath( int xInit, int yInit, int xDest, int yDest );	
 	void					HandleInput();
 private:
 	SDL_Surface* 			Window;

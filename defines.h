@@ -5,6 +5,7 @@
 #include "SDL/SDL_ttf.h"
 #include "SDL/SDL_gfxPrimitives.h"
 #include <sstream>
+#include <string>
 
 // Graphic Defaults
 #define WINDOW_WIDTH 430
