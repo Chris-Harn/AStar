@@ -122,6 +122,7 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 }
 
 void Graphics::DrawBoard() {
+
 	// Draw open, closed, and blocked squares
 	// empty = 0, open = 1, closed = 2, blocked = 3	
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
@@ -129,7 +130,7 @@ void Graphics::DrawBoard() {
 			if( grid[ x ][ y ] == 3 ) {
 				boxRGBA( Window, ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5, ( x * BOX_WIDTH ) + BOX_WIDTH + 5, ( y * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 60, 60, 255 );
 			}
-			else if( grid[ x ][ y ] == 2 || grid[ x ][ y ] == 1 ) {
+			else if( grid[ x ][ y ] >= 1 ) {
 				boxRGBA( Window, ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5, ( x * BOX_WIDTH ) + BOX_WIDTH + 5, ( y * BOX_HEIGHT ) + BOX_HEIGHT + 5, 210, 210, 210, 255 );
 				DrawText( "F: ", pt_grid[ x ][ y ]->GetF(), ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5 );
 			}
@@ -137,7 +138,13 @@ void Graphics::DrawBoard() {
 	}
 	
 	// Draw the Current Square - Green
-	boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
+	if( pt_grid[ currentX ][ currentY ] != NULL ) {
+		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
+		DrawText( "F: ", pt_grid[ currentX ][ currentY ]->GetF(), ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5 );
+	}
+	else {
+		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
+	}
 	
 	// Draw the lines
 	for( int i = 0; i <= MOUSE_BOX_WIDTH; i++ ) {
@@ -239,7 +246,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		}
 		printf("Selected X:%d\tY:%d to be on lowest F:%d.\n", lowestX, lowestY, lowestF ); 
 
-		// if current lowest node = return; Found the route
+		// if current lowest node = return; Found the route		
 		if( lowestX == xDest && lowestY == yDest ) {
 			currentX = xDest;
 			currentY = yDest;
