@@ -122,7 +122,6 @@ void Graphics::DrawSprite( SDL_Surface* spriteSurface, int srcX, int srcY, int d
 }
 
 void Graphics::DrawBoard() {
-
 	// Draw open, closed, and blocked squares
 	// empty = 0, open = 1, closed = 2, blocked = 3	
 	for( int x = 0; x < MOUSE_BOX_WIDTH; x++ ) {
@@ -374,7 +373,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		}
 
 		// top right
-		if( lowestY - 1 <= 0 && lowestX + 1 < MOUSE_BOX_HEIGHT ) {
+		if( lowestY - 1 >= 0 && lowestX + 1 < MOUSE_BOX_HEIGHT ) {
 			if( grid[ lowestX + 1][ lowestY - 1 ] == 0 ) {
 				printf("Making the top right square at X:%d\tY:%d\n", lowestX + 1, lowestY - 1 );
 				Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY - 1, destinationX, destinationY );	
