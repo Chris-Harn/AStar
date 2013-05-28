@@ -137,6 +137,8 @@ void Graphics::DrawBoard() {
 			else if( grid[ x ][ y ] >= 1 ) {
 				boxRGBA( Window, ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5, ( x * BOX_WIDTH ) + BOX_WIDTH + 5, ( y * BOX_HEIGHT ) + BOX_HEIGHT + 5, 210, 210, 210, 255 );
 				DrawText( "F: ", pt_grid[ x ][ y ]->GetF(), ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) + 5 );
+				DrawText( "G: ", pt_grid[ x ][ y ]->GetG(), ( x * BOX_WIDTH ) + 5, ( y * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
+				DrawText( "H: ", pt_grid[ x ][ y ]->GetH(), ( x * BOX_WIDTH ) - 25 + BOX_WIDTH, ( y * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
 			}
 		}
 	}
@@ -145,6 +147,8 @@ void Graphics::DrawBoard() {
 	if( pt_grid[ currentX ][ currentY ] != NULL ) {
 		boxRGBA( Window, ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5, ( currentX * BOX_WIDTH ) + BOX_WIDTH + 5, ( currentY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 		DrawText( "F: ", pt_grid[ currentX ][ currentY ]->GetF(), ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) + 5 );
+		DrawText( "G: ", pt_grid[ currentX ][ currentY ]->GetG(), ( currentX * BOX_WIDTH ) + 5, ( currentY * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
+		DrawText( "H: ", pt_grid[ currentX ][ currentY ]->GetH(), ( currentX * BOX_WIDTH ) - 25 + BOX_WIDTH, ( currentY * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
 		DrawText( "End", -1, ( currentX * BOX_WIDTH ) - 10 + BOX_WIDTH / 2, ( currentY * BOX_HEIGHT ) + 5 + BOX_WIDTH / 2 );
 	}
 	else {
@@ -155,6 +159,8 @@ void Graphics::DrawBoard() {
 	if( pt_grid[ startX ][ startY ] != NULL ) {
 		boxRGBA( Window, ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5, ( startX * BOX_WIDTH ) + BOX_WIDTH + 5, ( startY * BOX_HEIGHT ) + BOX_HEIGHT + 5, 60, 255, 60, 255 );
 		DrawText( "F: ", pt_grid[ startX ][ startY ]->GetF(), ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) + 5 );
+		DrawText( "G: ", pt_grid[ startX ][ startY ]->GetG(), ( startX * BOX_WIDTH ) + 5, ( startY * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
+		DrawText( "H: ", pt_grid[ startX ][ startY ]->GetH(), ( startX * BOX_WIDTH ) - 25 + BOX_WIDTH, ( startY * BOX_HEIGHT ) - 10 + BOX_HEIGHT );
 		DrawText( "Start", -1, ( startX * BOX_WIDTH ) - 10 + BOX_WIDTH / 2, ( startY * BOX_HEIGHT ) + 5 + BOX_WIDTH / 2 );
 	}
 	else {
@@ -184,7 +190,7 @@ void Graphics::MouseLeftDown( int x, int y ) {
 	x = x / BOX_WIDTH;
 	y = y /  BOX_HEIGHT;
 
-	if( x != currentX || y != currentY ) {
+	if( ( x != currentX || y != currentY ) && grid[ x ][ y ] != 3 ) {
 		printf("\nWent down findPath.\n\n");
 		FindPath( currentX, currentY, x, y );
 	}

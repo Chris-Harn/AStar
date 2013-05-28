@@ -37,6 +37,10 @@ int Square::GetF() {
 	return F;
 }
 
+int Square::GetH() {
+	return H;
+}
+
 int Square::GetX() {
 	return xPos;
 }

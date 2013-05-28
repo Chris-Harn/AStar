@@ -13,6 +13,7 @@ public:
 								// F = G + H
 	int							GetG();
 	int							GetF();
+	int							GetH();
 	int							GetX();
 	int							GetY();
 	void						UpdateDestination( int xDest, int yDest );
