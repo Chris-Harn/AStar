@@ -9,6 +9,7 @@ A* Implementation written in C++, SDL, g++, VIM and Screen GNU.  Compiled in g++
 These needed to installed:
 - SDL 1.2
 - SDL_ttf 2.0 from here www.libsdl.org/projects/SDL_ttf/
+- SDL_gfx from here www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
 
 These files need to be put in the directory:
 - arial.tff
@@ -25,4 +26,4 @@ To compile and run:
     make
     ./main
 
-After you have successfully built and started the applet, you can start path finding by left clicking on the grid.  It will label the Movement and Hurestic cost for every node it touches along with the Start and End nodes. The program also displays a frame rate in the top left corner.  Right clicking will reset the simulation to its original state. 
+After you have successfully built and started the applet, you can start path finding by left clicking on the grid.  It will label the Movement and Hurestic cost for every node it touches along with the Start and End nodes.  The program also displays a frame rate in the top left corner.  Right clicking will reset the simulation to its original state. 
