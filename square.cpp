@@ -11,7 +11,6 @@ Square::Square() {
 
 Square::~Square() {
  	if( _parent != NULL ) {
-		delete _parent;
 		_parent = NULL;
 	}
 }

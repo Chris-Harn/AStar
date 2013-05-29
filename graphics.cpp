@@ -239,7 +239,6 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 	destinationY = yDest;
 
 	// create a node containing the node_start
-	// Square *node = new Square( NULL, 0, currentX, currentY, destinationX, destinationY );
 	Square *node = new Square( NULL, 0, currentX, currentY, destinationX, destinationY );
 	
 	// put node on the openlist
@@ -283,7 +282,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestX - 1 >= 0 ) {		
 			if( grid[ lowestX - 1][ lowestY ] == 0 ) {
 				printf("Making the left square at X:%d\tY:%d\n", lowestX - 1, lowestY );
-				Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX - 1 ][ lowestY ] = 1;	
 				pt_grid[ lowestX - 1 ][ lowestY ] = node;
@@ -292,7 +291,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX - 1 ][ lowestY ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX - 1, lowestY );
 					delete pt_grid[ lowestX - 1 ][ lowestY ];
-					Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY, destinationX, destinationY );	
 					pt_grid[ lowestX - 1 ][ lowestY ] = node;
 				}
 			}
@@ -302,7 +301,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY - 1 >= 0 && lowestX - 1 >= 0 ) {
 			if( grid[ lowestX - 1][ lowestY - 1 ] == 0 ) {
 				printf("Making the top left square at X:%d\tY:%d\n", lowestX - 1, lowestY - 1 );
-				Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY - 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY - 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX - 1 ][ lowestY - 1 ] = 1;	
 				pt_grid[ lowestX - 1 ][ lowestY - 1 ] = node;
@@ -311,7 +310,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 14 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX - 1 ][ lowestY - 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX - 1, lowestY - 1 );
 					delete pt_grid[ lowestX - 1 ][ lowestY - 1 ];
-					Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY - 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY - 1, destinationX, destinationY );	
 					pt_grid[ lowestX - 1 ][ lowestY - 1 ] = node;
 				}
 			}
@@ -321,7 +320,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY + 1 < MOUSE_BOX_HEIGHT && lowestX - 1 >= 0 ) {
 			if( grid[ lowestX - 1][ lowestY + 1 ] == 0 ) {
 				printf("Making the lower left square at X:%d\tY:%d\n", lowestX - 1, lowestY + 1 );
-				Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY + 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY + 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX - 1 ][ lowestY + 1] = 1;	
 				pt_grid[ lowestX - 1 ][ lowestY + 1] = node;
@@ -330,7 +329,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 14 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX - 1 ][ lowestY + 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX -1, lowestY + 1 );
 					delete pt_grid[ lowestX -1 ][ lowestY + 1 ];
-					Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY + 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX - 1, lowestY + 1, destinationX, destinationY );	
 					pt_grid[ lowestX - 1 ][ lowestY + 1] = node;
 				}
 			}
@@ -340,7 +339,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY - 1 >= 0 ) {
 			if( grid[ lowestX ][ lowestY - 1 ] == 0 ) {
 				printf("Making the top square at X:%d\tY:%d\n", lowestX, lowestY - 1 );
-				Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX ][ lowestY - 1 ] = 1;	
 				pt_grid[ lowestX ][ lowestY - 1 ] = node;
@@ -349,7 +348,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX ][ lowestY - 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d\n with a lower G Value", lowestX, lowestY - 1 );
 					delete pt_grid[ lowestX ][ lowestY - 1 ];
-					Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY - 1, destinationX, destinationY );	
 					pt_grid[ lowestX ][ lowestY - 1 ] = node;
 				}
 			}
@@ -359,7 +358,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY + 1 < MOUSE_BOX_HEIGHT ) {
 			if( grid[ lowestX ][ lowestY + 1 ] == 0 ) {
 				printf("Making the bottom square at X:%d\tY:%d\n", lowestX, lowestY + 1 );
-				Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX ][ lowestY + 1 ] = 1;	
 				pt_grid[ lowestX ][ lowestY + 1 ] = node;
@@ -368,7 +367,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX ][ lowestY + 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d with a lower G Value\n", lowestX, lowestY + 1 );
 					delete pt_grid[ lowestX ][ lowestY + 1 ];
-					Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX, lowestY + 1, destinationX, destinationY );	
 					pt_grid[ lowestX ][ lowestY + 1 ] = node;
 				}
 			}
@@ -379,7 +378,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 			if( grid[ lowestX + 1][ lowestY ] == 0 ) {
 				printf("Making the right square at X:%d\tY:%d\n", lowestX + 1, lowestY );
 				// Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY, destinationX, destinationY );	
-				Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX + 1 ][ lowestY ] = 1;	
 				pt_grid[ lowestX + 1 ][ lowestY ] = node;
@@ -388,7 +387,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 10 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX + 1 ][ lowestY ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d with a lower G Value.\n", lowestX + 1, lowestY );
 					delete pt_grid[ lowestX + 1 ][ lowestY ];
-					Square *node = new Square( NULL, 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 10 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY, destinationX, destinationY );	
 					pt_grid[ lowestX + 1 ][ lowestY ] = node;
 				}
 			}
@@ -398,7 +397,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY - 1 >= 0 && lowestX + 1 < MOUSE_BOX_HEIGHT ) {
 			if( grid[ lowestX + 1][ lowestY - 1 ] == 0 ) {
 				printf("Making the top right square at X:%d\tY:%d\n", lowestX + 1, lowestY - 1 );
-				Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY - 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY - 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX + 1 ][ lowestY - 1 ] = 1;	
 				pt_grid[ lowestX + 1 ][ lowestY - 1 ] = node;
@@ -407,7 +406,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 14 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX + 1 ][ lowestY - 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d with a lower G Value.\n", lowestX + 1, lowestY - 1 );
 					delete pt_grid[ lowestX + 1 ][ lowestY - 1 ];
-					Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY - 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY - 1, destinationX, destinationY );	
 					pt_grid[ lowestX + 1 ][ lowestY - 1 ] = node;
 				}
 			}
@@ -417,7 +416,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 		if( lowestY + 1 < MOUSE_BOX_HEIGHT && lowestX + 1 < MOUSE_BOX_WIDTH ) {
 			if( grid[ lowestX + 1][ lowestY + 1 ] == 0 ) {
 				printf("Making the lower right square at X:%d\tY:%d\n", lowestX + 1, lowestY + 1 );
-				Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY + 1, destinationX, destinationY );	
+				Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY + 1, destinationX, destinationY );	
 				openList++;	
 				grid[ lowestX + 1 ][ lowestY + 1] = 1;	
 				pt_grid[ lowestX + 1 ][ lowestY + 1] = node;
@@ -426,7 +425,7 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 				if( 14 + pt_grid[ lowestX ][ lowestY ]->GetG() < pt_grid[ lowestX + 1 ][ lowestY + 1 ]->GetG() ) {
 					printf("Replacing the square at X:%d\tY:%d with a lower G Value.\n", lowestX + 1, lowestY + 1 );
 					delete pt_grid[ lowestX + 1 ][ lowestY + 1 ];
-					Square *node = new Square( NULL, 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY + 1, destinationX, destinationY );	
+					Square *node = new Square( pt_grid[ lowestX ][ lowestY ], 14 + pt_grid[ lowestX ][ lowestY ]->GetG(), lowestX + 1, lowestY + 1, destinationX, destinationY );	
 					pt_grid[ lowestX + 1 ][ lowestY + 1] = node;
 				}
 			}
