@@ -18,6 +18,7 @@ main
 *.swp
 *.swo
 *.swn
+.*.swn
 
 # Needed Files, but Can't Share
 *.dll
@@ -26,3 +27,4 @@ main
 # Files just for testing
 *.bmp
 *.out
+*.txt
