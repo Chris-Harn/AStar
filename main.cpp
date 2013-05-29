@@ -2,6 +2,8 @@
 #include "graphics.h"
 #include "timer.h"
 #include "square.h"
+#include "location.h"
+#include "path.h"
 
 int main( int argc, char **argv ) {
 	// Setup graphics engine
