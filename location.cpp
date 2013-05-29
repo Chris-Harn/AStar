@@ -9,3 +9,5 @@ Location::Location( Uint8 xLoc, Uint8 yLoc ) {
 	x = xLoc;
 	y = yLoc;
 }
+
+Location::~Location() { }

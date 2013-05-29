@@ -2,7 +2,7 @@
 
 Path::Path() {
 	maxNodes = 10;	
-	nodes = new Card*[ maxNodes ];
+	nodes = new Location*[ maxNodes ];
 	numberOfNodes = 0;
 }
 
@@ -21,23 +21,23 @@ void Path::EmptyPath() {
 
 void Path::AddLocation( int x, int y ) {
 	if( x < 0 || y < 0 ) {
-		printf("X: %d\tY: %d was incorrectly tried to add to the Location list.\n");
+		printf("X: %d\tY: %d was incorrectly tried to add to the Location list.\n", x, y );
 		return;
 	}
 
 	if( ( numberOfNodes + 1 ) > maxNodes ) {
 		maxNodes += 10;
 		Location **newnodes = new Location*[ maxNodes ];
-		for( int location = 0; location < numberOfNodes; location++ ) {
-			newnodes[ location ] = nodes[ location ];
-			delete nodes[ location ];
+		for( int placeHolder = 0; placeHolder < numberOfNodes; placeHolder++ ) {
+			newnodes[ placeHolder ] = nodes[ placeHolder ];
+			delete nodes[ placeHolder ];
 		}
 
 		delete[] nodes;
 		nodes = newnodes;
 	}
 
-	Location loc = new Location( x, y );
+	Location *loc = new Location( x, y );
 	nodes[ numberOfNodes ] = loc;
 	++numberOfNodes;
 }
