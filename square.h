@@ -18,8 +18,9 @@ public:
 	int							GetY();
 	void						UpdateDestination( int xDest, int yDest );
 	int							EstimateDistance( int xDest, int yDest );
+	Square						*ReturnParent();
 private:
-	Square*						_parent; // parent Square
+	Square						*_parent; // parent Square
 	int 						G; // Movement cost = parent cost + cost to move
 	int							H; // Estimated cost to finish
 	int							F; // G + H = total cost

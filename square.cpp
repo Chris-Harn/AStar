@@ -59,8 +59,12 @@ int Square::EstimateDistance( int xDest, int yDest ) {
 	yd = yDest - yPos;
 
 	// Manhattan distance
-	return( abs(xd) + abs(yd) ) * 10;
+	// return( abs(xd) + abs(yd) ) * 10;
 
 	// Euclidian Distance
-	// return ( (int) (sqrt( xd * xd + yd * yd ) ) );	
+	return ( (int) (sqrt( xd * xd + yd * yd ) ) * 10 );	
+}
+
+Square* Square::ReturnParent() {
+	return _parent;
 }
