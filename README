@@ -1,0 +1,28 @@
+A* Implementation By Chris Harn
+Started May 14th, 2013
+=====
+
+A* Implementation written in C++, SDL, g++, VIM and Screen GNU.  Compiled in g++ on Xbuntu.
+
+## Dependencies
+
+These needed to installed:
+- SDL 1.2
+- SDL_ttf 2.0 from here www.libsdl.org/projects/SDL_ttf/
+
+These files need to be put in the directory:
+- arial.tff
+- SDL.dll
+- sdlgfx.dll
+- SDL_ttf.dll
+
+## Building
+
+To build this project, you need to make sure all the needed files are included in the AStar directory: arial.tff, SDL.dll, sdlgfx.dll, and SDL_ttf.dll.
+
+To compile and run:
+
+    make
+    ./main
+
+After you have successfully built and started the applet, you can start path finding by left clicking on the grid.  It will label the Movement and Hurestic cost for every node it touches along with the Start and End nodes. The program also displays a frame rate in the top left corner.  Right clicking will reset the simulation to its original state. 
