@@ -262,12 +262,6 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 			}
 		}
 
-		// if current lowest node = return; Found the route		
-		if( lowestX == xDest && lowestY == yDest ) {
-			currentX = xDest;
-			currentY = yDest;
-			return;
-		}
 		
 		// generate more open nodes for the list in order
 		// left, top left, top, top right, right, bottom right,
@@ -409,11 +403,18 @@ void Graphics::FindPath( int xInit, int yInit, int xDest, int yDest ) {
 			}
 		}
 		
+		// if current lowest node = return; Found the route		
+		if( lowestX == xDest && lowestY == yDest ) {
+			currentX = xDest;
+			currentY = yDest;
+			return;
+		}
+
 		// last... close the current node
 		--openList;
 		grid[ lowestX ][ lowestY ] = 2;
 	}
-
+	
 	printf("\nNever found the ending node.\n");
 }
 
