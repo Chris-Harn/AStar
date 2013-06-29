@@ -1,11 +1,11 @@
-A* Implementation By Chris Harn
+A* Implementation
 =====
 
 ![Screenshot](/screenshot.png?raw=true)
 
 A* Implementation written in C++, SDL, g++, VIM and Screen GNU.  Compiled in g++ on Xbuntu.  Original started with Manhattan Heuristic, but changed it to give a better path.
 
-Started May 14th, 2013. Completed May 28th, 2013
+Started May 14th, 2013. Completed May 28th, 2013 by Chris Harn.
 
 ## Dependencies
 
